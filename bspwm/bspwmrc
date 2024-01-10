@@ -25,6 +25,9 @@ bspc config gapless_monocle      true
 # java GUI support  
 wmname LG3D &
 
+pgrep -x sxhkd || sxhkd &
+polybar &
+
 # set background (root window) color & root cursor type
 xsetroot -solid '#1E1E2E' -cursor_name left_ptr &
 
