@@ -9,6 +9,9 @@ super + slash
 super + e
 	pcmanfm
 
+super + a 
+	flameshot gui
+
 super + Shift_R
 	~/.system/scripts/programs.sh
 
@@ -35,6 +38,13 @@ super + y
 super + g
 	bspc node -s biggest.window
 
+
+XF86AudioPrev
+	playerctl previous 
+XF86AudioPlay
+	playerctl play-pause
+XF86AudioNext
+	playerctl next 
 #
 # state/flags
 #

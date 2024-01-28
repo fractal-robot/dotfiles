@@ -1,4 +1,4 @@
--- Set <space> as the leader key
+--" "Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
@@ -252,6 +252,7 @@ vim.cmd.colorscheme "catppuccin-mocha"
 vim.o.hlsearch = false
 
 -- Make relative line numbers default
+vim.o.number = true
 vim.o.relativenumber = true
 
 -- Enable mouse mode
@@ -286,6 +287,18 @@ vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
 
 -- [[ Basic Keymaps ]]
+
+-- automatically move selected text
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- ctrl + d/u centered
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+-- paste on text without replacing copy buffer -> leader + p
+vim.keymap.set("x", "<leader>p", "\"_DP")
+
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
