@@ -31,7 +31,9 @@ polybar &
 # set background (root window) color & root cursor type
 xsetroot -solid '#1E1E2E' -cursor_name left_ptr &
 
-setxkbmap -option caps:escape,shift:both_capslock &
+# disable black screen saver
+xset -dpms &
+xset s off &
 
 bspc rule -a window state=fullscreen desktop=^6
 

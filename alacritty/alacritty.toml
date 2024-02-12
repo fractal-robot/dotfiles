@@ -5,14 +5,12 @@ live_config_reload = true
 duration = 0
 
 [cursor]
-blink_interval = 750
-blink_timeout = 3
 thickness = 0.15
 unfocused_hollow = true
 vi_mode_style = "Underline"
 
 [cursor.style]
-blinking = "Off"
+blinking = "Never"
 shape = "Block"
 
 [debug]

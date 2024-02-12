@@ -14,7 +14,7 @@ if not vim.loop.fs_stat(lazypath) then
     'clone',
     '--filter=blob:none',
     'https://github.com/folke/lazy.nvim.git',
-    '--branch=stable',     -- latest stable release
+    '--branch=stable', -- latest stable release
     lazypath,
   }
 end
@@ -28,6 +28,29 @@ vim.opt.rtp:prepend(lazypath)
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
+
+  {
+    "nvim-neorg/neorg",
+    build = ":Neorg sync-parsers",
+    -- tag = "*",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("neorg").setup {
+        load = {
+          ["core.defaults"] = {},  -- Loads default behaviour
+          ["core.concealer"] = {}, -- Adds pretty icons to your documents
+          ["core.dirman"] = {      -- Manages Neorg workspaces
+            config = {
+              workspaces = {
+                notes = "~/notes",
+              },
+              default_workspace = "notes",
+            },
+          },
+        },
+      }
+    end,
+  },
 
   -- Git related plugins
   'tpope/vim-fugitive',
@@ -217,8 +240,53 @@ require('lazy').setup({
   {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
-    opts = {}     -- this is equalent to setup({}) function
+    opts = {} -- this is equalent to setup({}) function
   },
+
+  {
+    "ellisonleao/glow.nvim",
+    config = true,
+    cmd = "Glow",
+    width_ratio = 0.9,
+    height_ratio = 0.9,
+  },
+
+  {
+    "folke/zen-mode.nvim",
+    opts = {
+      window = {
+        width = 80, -- width of the Zen window
+        -- by default, no options are changed for the Zen window
+        -- uncomment any of the options below, or add other vim.wo options you want to apply
+        options = {
+          signcolumn = "no",    -- disable signcolumn
+          cursorline = false,   -- disable cursorline
+          cursorcolumn = false, -- disable cursor column
+          foldcolumn = "0",     -- disable fold column
+        },
+      },
+    },
+    plugins = {
+      -- disable some global vim options (vim.o...)
+      -- comment the lines to not apply the options
+      options = {
+        enabled = true,
+        ruler = true,                   -- disables the ruler text in the cmd line area
+        showcmd = true,                 -- disables the command in the last line of the screen
+
+        laststatus = 0,                 -- turn off the statusline in zen mode
+
+        gitsigns = { enabled = false }, -- disables git signs
+        tmux = { enabled = false },     -- disables the tmux statusline
+
+        alacritty = {
+          enabled = true,
+          font = "10",
+        },
+      }
+    },
+  },
+
 
   require 'kickstart.plugins.autoformat',
   require 'kickstart.plugins.debug',
@@ -244,9 +312,13 @@ vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
 -- vim.o.expandtab = true
 
+-- vim.o.cursorcolumn = true
+vim.o.cursorline = true
+
 vim.o.guicursor = ""
 
-vim.o.colorcolumn = 80
+vim.o.textwidth = 80
+vim.opt.colorcolumn = "81"
 
 vim.o.termguicolors = true
 vim.cmd.colorscheme "catppuccin-mocha"
@@ -290,6 +362,10 @@ vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
 
 -- [[ Basic Keymaps ]]
+
+vim.keymap.set("n", "<ESC>", ":w<CR>")
+
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 -- automatically move selected text
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -433,7 +509,7 @@ vim.defer_fn(function()
     textobjects = {
       select = {
         enable = true,
-        lookahead = true,         -- Automatically jump forward to textobj, similar to targets.vim
+        lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
         keymaps = {
           -- You can use the capture groups defined in textobjects.scm
           ['aa'] = '@parameter.outer',
@@ -446,7 +522,7 @@ vim.defer_fn(function()
       },
       move = {
         enable = true,
-        set_jumps = true,         -- whether to set jumps in the jumplist
+        set_jumps = true, -- whether to set jumps in the jumplist
         goto_next_start = {
           [']m'] = '@function.outer',
           [']]'] = '@class.outer',
