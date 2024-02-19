@@ -1,4 +1,4 @@
-import = ["/home/usr/.config/alacritty/catppuccin-mocha.toml"]
+import = ["~/.config/alacritty/rose-pine.toml"]
 live_config_reload = true
 
 [bell]
@@ -20,7 +20,7 @@ render_timer = false
 TERM = "xterm-256color"
 
 [font]
-size = 8.5
+size = 9.5
 
 [font.bold]
 style = "Bold"

@@ -1,0 +1,51 @@
+polybar|notice:  Parsing config file: /home/usr/.config/polybar/config.ini
+polybar|notice:  Listening for IPC messages (PID: 108058)
+polybar|notice:  Loading module 'bspwm' of type 'internal/bspwm'
+polybar|notice:  Loading module 'tray' of type 'internal/tray'
+polybar|notice:  Loading module 'polypomo' of type 'custom/script'
+polybar|notice:  Loading module 'date' of type 'internal/date'
+polybar|notice:  Loading module 'bluetooth' of type 'custom/script'
+polybar|notice:  Loading module 'pulseaudio' of type 'internal/pulseaudio'
+polybar|notice:  pulseaudio: using default sink alsa_output.usb-Generic_USB_Audio_200901010001-00.HiFi__hw_Dock_1__sink
+polybar|notice:  Loading module 'backlight' of type 'internal/backlight'
+polybar|notice:  Loading module 'battery' of type 'internal/battery'
+polybar|notice:  Loading module 'updates' of type 'custom/script'
+polybar|notice:  Loading module 'memory' of type 'internal/memory'
+polybar|notice:  Loading module 'cpu' of type 'custom/script'
+polybar|notice:  Loaded 11 modules
+polybar|notice:  Loaded font "SauceCodePro Nerd Font:size=10" (name=SauceCodePro Nerd Font, offset=2, file=/usr/share/fonts/TTF/SauceCodeProNerdFont-Regular.ttf)
+polybar|notice:  Loaded font "Noto Color Emoji:scale=12:antialias=false" (name=Noto Color Emoji, offset=2, file=/usr/share/fonts/noto/NotoColorEmoji.ttf)
+polybar|warn:  background_manager: Failed to get root pixmap, default to black (is there a wallpaper?)
+polybar|warn:  background_manager: Failed to get root pixmap, default to black (is there a wallpaper?)
+polybar|warn:  Systray selection already managed (window=0x5e00002)
+polybar|warn:  background_manager: Failed to get root pixmap, default to black (is there a wallpaper?)
+polybar|warn:  background_manager: Failed to get root pixmap, default to black (is there a wallpaper?)
+polybar|notice:  Received signal(2): Interrupt
+polybar|notice:  Termination signal received, shutting down...
+polybar|notice:  Parsing config file: /home/usr/.config/polybar/config.ini
+polybar|error: Uncaught exception, shutting down: Failed to open config file /home/usr/Path-to-where-you-downloaded/theme-name.ini: No such file or directory
+polybar|notice:  Parsing config file: /home/usr/.config/polybar/config.ini
+polybar|error: Uncaught exception, shutting down: Failed to open config file /home/usr/Path-to-where-you-downloaded/theme-name.ini: No such file or directory
+polybar|notice:  Parsing config file: /home/usr/.config/polybar/config.ini
+polybar|notice:  Listening for IPC messages (PID: 209755)
+polybar|notice:  Loading module 'bspwm' of type 'internal/bspwm'
+polybar|notice:  Loading module 'tray' of type 'internal/tray'
+polybar|notice:  Loading module 'polypomo' of type 'custom/script'
+polybar|notice:  Loading module 'date' of type 'internal/date'
+polybar|notice:  Loading module 'bluetooth' of type 'custom/script'
+polybar|notice:  Loading module 'pulseaudio' of type 'internal/pulseaudio'
+polybar|notice:  pulseaudio: using default sink alsa_output.usb-Generic_USB_Audio_200901010001-00.HiFi__hw_Dock_1__sink
+polybar|notice:  Loading module 'backlight' of type 'internal/backlight'
+polybar|notice:  Loading module 'battery' of type 'internal/battery'
+polybar|notice:  Loading module 'updates' of type 'custom/script'
+polybar|notice:  Loading module 'memory' of type 'internal/memory'
+polybar|notice:  Loading module 'cpu' of type 'custom/script'
+polybar|notice:  Loaded 11 modules
+polybar|notice:  Loaded font "SauceCodePro Nerd Font:size=10" (name=SauceCodePro Nerd Font, offset=2, file=/usr/share/fonts/TTF/SauceCodeProNerdFont-Regular.ttf)
+polybar|notice:  Loaded font "Noto Color Emoji:scale=12:antialias=false" (name=Noto Color Emoji, offset=2, file=/usr/share/fonts/noto/NotoColorEmoji.ttf)
+polybar|warn:  background_manager: Failed to get root pixmap, default to black (is there a wallpaper?)
+polybar|warn:  background_manager: Failed to get root pixmap, default to black (is there a wallpaper?)
+polybar|warn:  background_manager: Failed to get root pixmap, default to black (is there a wallpaper?)
+polybar|warn:  background_manager: Failed to get root pixmap, default to black (is there a wallpaper?)
+polybar|notice:  Received signal(15): Terminated
+polybar|notice:  Termination signal received, shutting down...

@@ -1,8 +1,5 @@
 #! /bin/sh
 
-# mouse configuration 
-# ~/.system/scripts/mouse.sh &
-
 if xrandr | grep "DP-0 connected"; then
 	bspc wm -O DP-0 HDMI-0
 	bspc monitor DP-0 -d I II III IV V
@@ -11,9 +8,9 @@ else
 	bspc monitor -d I II III IV V VI VII VIII IX X
 fi
 
-bspc config normal_border_color  "#1e1e2e"
-bspc config active_border_color  "#f38ba8"
-bspc config focused_border_color "#a6e3a1"
+bspc config normal_border_color  "#191724"
+bspc config focused_border_color  "#908caa"
+bspc config active_border_color "#524f67"
 
 bspc config border_width         2
 bspc config window_gap           0
@@ -29,7 +26,7 @@ pgrep -x sxhkd || sxhkd &
 polybar &
 
 # set background (root window) color & root cursor type
-xsetroot -solid '#1E1E2E' -cursor_name left_ptr &
+xsetroot -solid '#191724' -cursor_name left_ptr &
 
 # disable black screen saver
 xset -dpms &

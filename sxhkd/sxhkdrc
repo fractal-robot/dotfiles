@@ -10,7 +10,7 @@ super + e
 	pcmanfm
 
 super + a 
-	flameshot gui
+	maim -s | xclip -selection clipboard -t image/png
 
 super + Shift_R
 	~/.system/scripts/programs.sh
