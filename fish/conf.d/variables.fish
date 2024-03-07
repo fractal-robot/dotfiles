@@ -6,6 +6,7 @@ set -x XDG_CACHE_HOME "$HOME/.cache"
 
 # Set other variables 
 set -x EDITOR "/bin/nvim"
+set -x DEBUGINFOD_URLS "https://debuginfod.archlinux.org"
 
 set -x HISTFILE "$XDG_STATE_HOME/bash/history"
 set -x CARGO_HOME "$XDG_DATA_HOME/cargo"

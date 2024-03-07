@@ -32,5 +32,5 @@ xsetroot -solid '#191724' -cursor_name left_ptr &
 xset -dpms &
 xset s off &
 
-bspc rule -a window state=fullscreen desktop=^6
+bspc rule -a window desktop=^6
 

@@ -243,6 +243,11 @@ require('lazy').setup({
   },
 
   {
+    'ggandor/leap.nvim',
+    dependencies = { 'tpope/vim-repeat' },
+  },
+
+  {
     "folke/zen-mode.nvim",
     opts = {
       window = {
@@ -270,6 +275,14 @@ require('lazy').setup({
     },
   },
 
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+  },
+
+
 
   require 'kickstart.plugins.autoformat',
   require 'kickstart.plugins.debug',
@@ -287,12 +300,13 @@ require('lazy').setup({
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
 
-vim.cmd('autocmd BufEnter * set formatoptions-=cro')
-vim.cmd('autocmd BufEnter * setlocal formatoptions-=cro')
+vim.cmd([[let g:c_syntax_for_h = 1]])
 
-vim.o.tabstop = 3
-vim.o.softtabstop = 3
-vim.o.shiftwidth = 3
+vim.opt.foldenable = false
+
+vim.o.tabstop = 2
+vim.o.softtabstop = 2
+vim.o.shiftwidth = 2
 vim.o.expandtab = true
 
 vim.o.cursorcolumn = true
@@ -402,6 +416,8 @@ require('telescope').setup {
   },
 }
 
+require('leap').create_default_mappings()
+
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
 
@@ -472,6 +488,8 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
 -- Defer Treesitter setup after first render to improve startup time of 'nvim {filename}'
+
+
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
@@ -537,6 +555,7 @@ vim.defer_fn(function()
     },
   }
 end, 0)
+
 
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
@@ -624,6 +643,9 @@ local servers = {
   cssls = {},
   eslint = {},
   tsserver = {},
+  zls = {},
+  ols = {
+  },
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
@@ -633,6 +655,9 @@ local servers = {
     },
   },
 }
+
+local lspconfig = require('lspconfig')
+lspconfig.ols.setup({})
 
 -- Setup neovim lua configuration
 require('neodev').setup()
