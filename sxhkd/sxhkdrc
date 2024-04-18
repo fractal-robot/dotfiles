@@ -1,7 +1,7 @@
 # xev -event keyboard
 
 super + m
-	alacritty	
+	kitty -1
 
 super + slash
 	librewolf
