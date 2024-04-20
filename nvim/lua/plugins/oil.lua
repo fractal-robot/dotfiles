@@ -1,5 +1,5 @@
-return { 
-	'stevearc/oil.nvim',
+return {
+	"stevearc/oil.nvim",
 	opts = {},
 	-- Optional dependencies
 	dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -14,10 +14,10 @@ return {
 			},
 
 			delete_to_trash = true,
-			skip_confirm_for_simple_edits = true, 
+			skip_confirm_for_simple_edits = true,
 			-- :help prompt_save_on_select_new_entry
 		})
 
 		vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-	end
+	end,
 }

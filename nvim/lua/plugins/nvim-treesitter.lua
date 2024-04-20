@@ -1,5 +1,6 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
+	build = ":TSUpdate",
 
 	config = function()
 		local builtin = require("telescope.builtin")
@@ -9,9 +10,12 @@ return {
 		vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
 
 		require("nvim-treesitter.configs").setup({
-			build = ":TSUpdate",
 			auto_install = true,
 			ensure_installed = { "c", "lua", "vimdoc", "vim", "markdown" },
+			
+			bordercharts = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+
+			highlight = { enable = true },
 		})
 	end,
 }
