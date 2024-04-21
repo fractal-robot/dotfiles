@@ -8,21 +8,6 @@ return {
 		"nvim-neorg/neorg",
 		-- put any other flags you wanted to pass to lazy here!
 		config = function()
-			require("image").setup({
-				backend = "kitty",
-				integrations = {
-					neorg = {
-						enabled = true,
-						clear_in_insert_mode = false,
-						download_remote_images = true,
-						only_render_image_at_cursor = false,
-						filetypes = { "norg" },
-					},
-				},
-
-				max_width = 80,
-			})
-
 			require("neorg").setup({
 				load = {
 					["core.defaults"] = {},

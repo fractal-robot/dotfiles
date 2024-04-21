@@ -26,8 +26,7 @@ vim.wo.foldlevel = 99
 vim.wo.conceallevel = 2
 vim.wo.wrap = false
 
--- Hide the tilde on blank lines
-vim.wo.fillchars = "eob: "
+vim.opt.scrolloff = 10
 
 vim.opt.foldenable = false -- disable native nvim folding
 
@@ -38,8 +37,10 @@ vim.o.cursorcolumn = true
 vim.o.cursorline = true
 
 vim.opt.colorcolumn = "80"
+vim.opt.textwidth = 80
 
 vim.o.hlsearch = true -- highlight on search, interfere with noice.nvim?
+vim.keymap.set("n", "<leader><leader>", "<cmd>nohlsearch<CR>", { desc = "[ ] Clear highlights" })
 
 -- vim.api.nvim_set_hl(0, "Normal", { bg = "LightGray" })
 
@@ -71,3 +72,13 @@ vim.o.completeopt = "menuone,noselect"
 
 -- The cursor to be always block
 vim.o.guicursor = "a:block"
+
+-- Highlight when yanking text
+--  See `:help vim.highlight.on_yank()`
+vim.api.nvim_create_autocmd("TextYankPost", {
+	desc = "Highlight when yanking text",
+	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+})

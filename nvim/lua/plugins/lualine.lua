@@ -1,8 +1,17 @@
 return {
 	"nvim-lualine/lualine.nvim",
-	dependencies = { "nvim-tree/nvim-web-devicons" },
+	dependencies = { "nvim-tree/nvim-web-devicons", "folke/noice.nvim" },
 
 	config = function()
+		local function show_macro_recording()
+			local register = string.upper(vim.fn.reg_recording())
+			if register == "" then
+				return ""
+			else
+				return "(" .. register .. ")"
+			end
+		end
+
 		require("lualine").setup({
 			options = {
 				icons_enabled = true,
@@ -23,7 +32,13 @@ return {
 				},
 			},
 			sections = {
-				lualine_a = { "mode" },
+				lualine_a = {
+					{ "mode" },
+					{
+						"macro-recording",
+						fmt = show_macro_recording,
+					},
+				},
 				lualine_b = { "branch", "diff", "diagnostics" },
 				lualine_c = { "filename" },
 				lualine_x = { "filetype" },

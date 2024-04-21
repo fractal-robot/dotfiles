@@ -12,8 +12,8 @@ return {
 		require("nvim-treesitter.configs").setup({
 			auto_install = true,
 			ensure_installed = { "c", "lua", "vimdoc", "vim", "markdown" },
-			
-			bordercharts = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+
+			borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
 
 			highlight = { enable = true },
 		})
