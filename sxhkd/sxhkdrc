@@ -4,7 +4,7 @@ super + m
 	kitty -1
 
 super + slash
-	librewolf
+	qutebrowser
 
 super + e
 	pcmanfm

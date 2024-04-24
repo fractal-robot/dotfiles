@@ -2,6 +2,7 @@ if status is-interactive
 	set -g fish_greeting
 
 	fish_add_path /home/usr/.system/scripts/ -pP
+	fish_add_path /home/usr/programming/git/norg-fmt/target/release -pP 
 
 	starship init fish | source
 	zoxide init fish | source
@@ -14,11 +15,13 @@ if status is-interactive
 		alias wget="wget --hsts-file=\"$XDG_DATA_HOME/wget-hsts\""
 	end
 
-	abbr --position command --add s sudo 
-	abbr --position command --add c clear
-	abbr --position command --add l exa
-	abbr --position command --add ll exa -1la
-	abbr --position command --add v nvim
+	abbr --add s sudo 
+	abbr --add c clear
+	abbr --add l exa
+	abbr --add ll exa -1la
+	abbr --add v nvim
+	abbr --add rm trash-put
+
 
 	# alias v open_nvim
 

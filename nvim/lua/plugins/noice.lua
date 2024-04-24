@@ -1,4 +1,5 @@
 return {
+	--[[
 	{
 		"rcarriga/nvim-notify",
 
@@ -17,6 +18,7 @@ return {
 			})
 		end,
 	},
+	--]]
 
 	{
 		"folke/noice.nvim",
@@ -24,7 +26,7 @@ return {
 
 		dependencies = {
 			"MunifTanjim/nui.nvim",
-			"rcarriga/nvim-notify",
+			-- "rcarriga/nvim-notify",
 		},
 
 		config = function()
@@ -41,13 +43,14 @@ return {
 				},
 
 				messages = {
-					view = "mini", -- default view for messages
-					view_error = "notify", -- view for errors
-					view_warn = "notify", -- view for warnings
+					view = "mini",          -- default view for messages
+					view_error = "notify",  -- view for errors
+					view_warn = "notify",   -- view for warnings
 					view_history = "messages", -- view for :messages
 					view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
 				},
 
+				--[[
 				routes = {
 					{
 						filter = {
@@ -69,14 +72,26 @@ return {
 						},
 						opts = { skip = true },
 					},
-
 					{
 						filter = {
 							find = "E486",
 						},
 						opts = { skip = true },
 					},
+					{
+						filter = {
+							find = "1 change: before",
+						},
+						opts = { skip = true },
+					},
+					{
+						filter = {
+							find = "1 change: after",
+						},
+						opts = { skip = true },
+					},
 				},
+				--]]
 
 				views = {
 					cmdline_popup = {

@@ -1,6 +1,7 @@
 return {
 	"folke/which-key.nvim",
 	event = "VeryLazy",
+	
 	init = function()
 		-- the UI will show up after the timeout
 		vim.o.timeout = true

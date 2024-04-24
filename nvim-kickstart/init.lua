@@ -695,7 +695,7 @@ local on_attach = function(_, bufnr)
     vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
   end
 
-  nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+  nmap:help ins-completion:help ins-completion("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
   nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
 
   nmap("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
@@ -756,24 +756,21 @@ require("mason-lspconfig").setup()
 --  define the property 'filetypes' to the map in question.
 local servers = {
   clangd = {},
-  gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
   -- tsserver = {},
-  html = {},
-  cssls = {},
-  eslint = {},
-  tsserver = {},
-  zls = {
-    enable_build_on_save = true,
-  },
-  ols = {},
+  -- html = {},
+  -- cssls = {},
+  -- eslint = {},
+  -- tsserver = {},
+  -- zls = {
+  --   enable_build_on_save = true,
+  -- },
+  -- ols = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
-      -- NOTE: toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-      -- diagnostics = { disable = { 'missing-fields' } },
     },
   },
 }

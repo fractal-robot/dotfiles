@@ -4,9 +4,19 @@ set -x XDG_CONFIG_HOME "$HOME/.config"
 set -x XDG_STATE_HOME "$HOME/.local/state"
 set -x XDG_CACHE_HOME "$HOME/.cache"
 
-# Set other variables 
+
+if status is-interactive
 set -x EDITOR "/bin/nvim"
 set -x DEBUGINFOD_URLS "https://debuginfod.archlinux.org"
+set -x MANPAGER "nvim +Man!"
+
+set -Ux FZF_DEFAULT_OPTS "
+--color=fg:#908caa,bg:#191724,hl:#ebbcba
+--color=fg+:#e0def4,bg+:#26233a,hl+:#ebbcba
+--color=border:#403d52,header:#31748f,gutter:#191724
+--color=spinner:#f6c177,info:#9ccfd8,separator:#403d52
+--color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa"
+end 
 
 set -x HISTFILE "$XDG_STATE_HOME/bash/history"
 set -x CARGO_HOME "$XDG_DATA_HOME/cargo"

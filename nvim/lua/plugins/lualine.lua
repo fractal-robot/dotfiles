@@ -4,11 +4,9 @@ return {
 
 	config = function()
 		local function show_macro_recording()
-			local register = string.upper(vim.fn.reg_recording())
-			if register == "" then
-				return ""
-			else
-				return "(" .. register .. ")"
+			local register = vim.fn.reg_recording()
+			if register ~= "" then
+				return "@" .. register
 			end
 		end
 
