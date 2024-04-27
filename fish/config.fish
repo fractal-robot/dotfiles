@@ -1,8 +1,14 @@
 if status is-interactive
 	set -g fish_greeting
+	
+	set -x USER_SYSTEM_PATH "$HOME/system/"
 
-	fish_add_path /home/usr/.system/scripts/ -pP
-	fish_add_path /home/usr/programming/git/norg-fmt/target/release -pP 
+	fish_add_path $USER_SYSTEM_PATH/scripts/ -pP
+	fish_add_path $USER_SYSTEM_PATH/apps/ -pP
+
+  if test "$TERM" = "xterm-kitty"
+    alias ssh="kitten ssh"
+  end
 
 	starship init fish | source
 	zoxide init fish | source
@@ -22,9 +28,6 @@ if status is-interactive
 	abbr --add v nvim
 	abbr --add rm trash-put
 
-
-	# alias v open_nvim
-
 	fish_vi_key_bindings
 	set fish_cursor_default block # normal & visual mode
 	set fish_cursor_insert block
@@ -36,13 +39,5 @@ function fish_greeting
 	# /.system/scripts/ufetch
 	nerdfetch
 end
-
-function open_nvim
-	kitty @ set-spacing padding=0
-	nvim $argv
-	kitty @ set-spacing padding=default
-end
-
-
 
 

@@ -1,5 +1,9 @@
 # xev -event keyboard
 
+# Send to desktop
+# super + shift + {1-9,0}
+#     bspc node -d '^{1-9,10}' --follow
+
 super + m
 	kitty -1
 
@@ -13,7 +17,7 @@ super + a
 	maim -s | xclip -selection clipboard -t image/png
 
 super + Shift_R
-	~/.system/scripts/programs.sh
+	rofi -modes "run,drun" -show drun
 
 super + Escape
 	pkill -USR1 -x sxhkd

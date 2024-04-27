@@ -13,91 +13,6 @@
 # Change the argument to True to still load settings configured via autoconfig.yml
 config.load_autoconfig(False)
 
-# Which cookies to accept. With QtWebEngine, this setting also controls
-# other features with tracking capabilities similar to those of cookies;
-# including IndexedDB, DOM storage, filesystem API, service workers, and
-# AppCache. Note that with QtWebKit, only `all` and `never` are
-# supported as per-domain values. Setting `no-3rdparty` or `no-
-# unknown-3rdparty` per-domain on QtWebKit will have the same effect as
-# `all`. If this setting is used with URL patterns, the pattern gets
-# applied to the origin/first party URL of the page making the request,
-# not the request URL. With QtWebEngine 5.15.0+, paths will be stripped
-# from URLs, so URL patterns using paths will not match. With
-# QtWebEngine 5.15.2+, subdomains are additionally stripped as well, so
-# you will typically need to set this setting for `example.com` when the
-# cookie is set on `somesubdomain.example.com` for it to work properly.
-# To debug issues with this setting, start qutebrowser with `--debug
-# --logfilter network --debug-flag log-cookies` which will show all
-# cookies being set.
-# Type: String
-# Valid values:
-#   - all: Accept all cookies.
-#   - no-3rdparty: Accept cookies from the same origin only. This is known to break some sites, such as GMail.
-#   - no-unknown-3rdparty: Accept cookies from the same origin only, unless a cookie is already set for the domain. On QtWebEngine, this is the same as no-3rdparty.
-#   - never: Don't accept cookies at all.
-config.set('content.cookies.accept', 'all', 'chrome-devtools://*')
-
-# Which cookies to accept. With QtWebEngine, this setting also controls
-# other features with tracking capabilities similar to those of cookies;
-# including IndexedDB, DOM storage, filesystem API, service workers, and
-# AppCache. Note that with QtWebKit, only `all` and `never` are
-# supported as per-domain values. Setting `no-3rdparty` or `no-
-# unknown-3rdparty` per-domain on QtWebKit will have the same effect as
-# `all`. If this setting is used with URL patterns, the pattern gets
-# applied to the origin/first party URL of the page making the request,
-# not the request URL. With QtWebEngine 5.15.0+, paths will be stripped
-# from URLs, so URL patterns using paths will not match. With
-# QtWebEngine 5.15.2+, subdomains are additionally stripped as well, so
-# you will typically need to set this setting for `example.com` when the
-# cookie is set on `somesubdomain.example.com` for it to work properly.
-# To debug issues with this setting, start qutebrowser with `--debug
-# --logfilter network --debug-flag log-cookies` which will show all
-# cookies being set.
-# Type: String
-# Valid values:
-#   - all: Accept all cookies.
-#   - no-3rdparty: Accept cookies from the same origin only. This is known to break some sites, such as GMail.
-#   - no-unknown-3rdparty: Accept cookies from the same origin only, unless a cookie is already set for the domain. On QtWebEngine, this is the same as no-3rdparty.
-#   - never: Don't accept cookies at all.
-config.set('content.cookies.accept', 'all', 'devtools://*')
-
-# Value to send in the `Accept-Language` header. Note that the value
-# read from JavaScript is always the global value.
-# Type: String
-config.set('content.headers.accept_language', '', 'https://matchmaker.krunker.io/*')
-
-# User agent to send.  The following placeholders are defined:  *
-# `{os_info}`: Something like "X11; Linux x86_64". * `{webkit_version}`:
-# The underlying WebKit version (set to a fixed value   with
-# QtWebEngine). * `{qt_key}`: "Qt" for QtWebKit, "QtWebEngine" for
-# QtWebEngine. * `{qt_version}`: The underlying Qt version. *
-# `{upstream_browser_key}`: "Version" for QtWebKit, "Chrome" for
-# QtWebEngine. * `{upstream_browser_version}`: The corresponding
-# Safari/Chrome version. * `{qutebrowser_version}`: The currently
-# running qutebrowser version.  The default value is equal to the
-# unchanged user agent of QtWebKit/QtWebEngine.  Note that the value
-# read from JavaScript is always the global value. With QtWebEngine
-# between 5.12 and 5.14 (inclusive), changing the value exposed to
-# JavaScript requires a restart.
-# Type: FormatString
-config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version}', 'https://web.whatsapp.com/')
-
-# User agent to send.  The following placeholders are defined:  *
-# `{os_info}`: Something like "X11; Linux x86_64". * `{webkit_version}`:
-# The underlying WebKit version (set to a fixed value   with
-# QtWebEngine). * `{qt_key}`: "Qt" for QtWebKit, "QtWebEngine" for
-# QtWebEngine. * `{qt_version}`: The underlying Qt version. *
-# `{upstream_browser_key}`: "Version" for QtWebKit, "Chrome" for
-# QtWebEngine. * `{upstream_browser_version}`: The corresponding
-# Safari/Chrome version. * `{qutebrowser_version}`: The currently
-# running qutebrowser version.  The default value is equal to the
-# unchanged user agent of QtWebKit/QtWebEngine.  Note that the value
-# read from JavaScript is always the global value. With QtWebEngine
-# between 5.12 and 5.14 (inclusive), changing the value exposed to
-# JavaScript requires a restart.
-# Type: FormatString
-config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}; rv:90.0) Gecko/20100101 Firefox/90.0', 'https://accounts.google.com/*')
-
 # Which method of blocking ads should be used.  Support for Adblock Plus
 # (ABP) syntax blocklists using Brave's Rust library requires the
 # `adblock` Python package to be installed, which is an optional
@@ -109,39 +24,7 @@ config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}; rv:90.0) Gecko
 #   - adblock: Use Brave's ABP-style adblocker
 #   - hosts: Use hosts blocking
 #   - both: Use both hosts blocking and Brave's ABP-style adblocker
-c.content.blocking.method = 'both'
-
-# Load images automatically in web pages.
-# Type: Bool
-config.set('content.images', True, 'chrome-devtools://*')
-
-# Load images automatically in web pages.
-# Type: Bool
-config.set('content.images', True, 'devtools://*')
-
-# Enable JavaScript.
-# Type: Bool
-config.set('content.javascript.enabled', True, 'chrome-devtools://*')
-
-# Enable JavaScript.
-# Type: Bool
-config.set('content.javascript.enabled', True, 'devtools://*')
-
-# Enable JavaScript.
-# Type: Bool
-config.set('content.javascript.enabled', True, 'chrome://*/*')
-
-# Enable JavaScript.
-# Type: Bool
-config.set('content.javascript.enabled', True, 'qute://*/*')
-
-# Allow locally loaded documents to access remote URLs.
-# Type: Bool
-config.set('content.local_content_can_access_remote_urls', True, 'file:///home/usr/.local/share/qutebrowser/userscripts/*')
-
-# Allow locally loaded documents to access other local URLs.
-# Type: Bool
-config.set('content.local_content_can_access_file_urls', False, 'file:///home/usr/.local/share/qutebrowser/userscripts/*')
+c.content.blocking.method = 'adblock'
 
 # Enable smooth scrolling for web pages. Note smooth scrolling does not
 # work with the `:scroll-px` command.
@@ -164,6 +47,11 @@ c.statusbar.show = 'always'
 #   - multiple: Hide the tab bar if only one tab is open.
 #   - switching: Show the tab bar when switching tabs.
 c.tabs.show = 'always'
+
+## Page(s) to open at the start.
+## Type: List of FuzzyUrl, or FuzzyUrl
+c.url.start_pages = ['https://search.brave.com/search?q={}']
+
 
 # Page to open if :open -t/-b/-w is used without URL. Use `about:blank`
 # for a blank page.
@@ -189,314 +77,31 @@ c.url.default_page = 'https://search.brave.com/search?q={}'
 # the search engine name to the search term, e.g. `:open google
 # qutebrowser`.
 # Type: Dict
-c.url.searchengines = {'DEFAULT': 'https://search.brave.com/search?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'yt': 'https://www.youtube.com/results?search_query={}'}
-
-# Default zoom level.
-# Type: Perc
-c.zoom.default = '90%'
-
-# Text color of the completion widget. May be a single color to use for
-# all columns or a list of three colors, one for each column.
-# Type: List of QtColor, or QtColor
-c.colors.completion.fg = '#e0def4'
-
-# Background color of the completion widget for odd rows.
-# Type: QssColor
-c.colors.completion.odd.bg = '#21202e'
-
-# Background color of the completion widget for even rows.
-# Type: QssColor
-c.colors.completion.even.bg = '#21202e'
-
-# Foreground color of completion widget category headers.
-# Type: QtColor
-c.colors.completion.category.fg = '#eb6f92'
-
-# Background color of the completion widget category headers.
-# Type: QssColor
-c.colors.completion.category.bg = '#191724'
-
-# Top border color of the completion widget category headers.
-# Type: QssColor
-c.colors.completion.category.border.top = '#26233a'
-
-# Bottom border color of the completion widget category headers.
-# Type: QssColor
-c.colors.completion.category.border.bottom = '#1f1d2e'
-
-# Foreground color of the selected completion item.
-# Type: QtColor
-c.colors.completion.item.selected.fg = '#e0def4'
-
-# Background color of the selected completion item.
-# Type: QssColor
-c.colors.completion.item.selected.bg = '#1f1d2e'
-
-# Top border color of the selected completion item.
-# Type: QssColor
-c.colors.completion.item.selected.border.top = '#1f1d2e'
-
-# Bottom border color of the selected completion item.
-# Type: QssColor
-c.colors.completion.item.selected.border.bottom = '#1f1d2e'
-
-# Foreground color of the matched text in the selected completion item.
-# Type: QtColor
-c.colors.completion.item.selected.match.fg = '#ebbcba'
-
-# Foreground color of the matched text in the completion.
-# Type: QtColor
-c.colors.completion.match.fg = '#e0def4'
-
-# Color of the scrollbar handle in the completion view.
-# Type: QssColor
-c.colors.completion.scrollbar.fg = '#1f1d2e'
-
-# Color of the scrollbar in the completion view.
-# Type: QssColor
-c.colors.completion.scrollbar.bg = '#26233a'
-
-# Background color of the context menu. If set to null, the Qt default
-# is used.
-# Type: QssColor
-c.colors.contextmenu.menu.bg = '#1f1d2e'
-
-# Foreground color of the context menu. If set to null, the Qt default
-# is used.
-# Type: QssColor
-c.colors.contextmenu.menu.fg = '#e0def4'
-
-# Background color of the context menu's selected item. If set to null,
-# the Qt default is used.
-# Type: QssColor
-c.colors.contextmenu.selected.bg = '#ebbcba'
-
-# Foreground color of the context menu's selected item. If set to null,
-# the Qt default is used.
-# Type: QssColor
-c.colors.contextmenu.selected.fg = '#191724'
-
-# Background color of disabled items in the context menu. If set to
-# null, the Qt default is used.
-# Type: QssColor
-c.colors.contextmenu.disabled.bg = '#6e6a86'
-
-# Foreground color of disabled items in the context menu. If set to
-# null, the Qt default is used.
-# Type: QssColor
-c.colors.contextmenu.disabled.fg = '#e0def4'
-
-# Background color for the download bar.
-# Type: QssColor
-c.colors.downloads.bar.bg = '#191724'
-
-# Color gradient start for download text.
-# Type: QtColor
-c.colors.downloads.start.fg = '#31748f'
-
-# Color gradient start for download backgrounds.
-# Type: QtColor
-c.colors.downloads.start.bg = '#191724'
-
-# Color gradient end for download text.
-# Type: QtColor
-c.colors.downloads.stop.fg = '#ebbcba'
-
-# Color gradient stop for download backgrounds.
-# Type: QtColor
-c.colors.downloads.stop.bg = '#191724'
-
-# Color gradient interpolation system for download text.
-# Type: ColorSystem
-# Valid values:
-#   - rgb: Interpolate in the RGB color system.
-#   - hsv: Interpolate in the HSV color system.
-#   - hsl: Interpolate in the HSL color system.
-#   - none: Don't show a gradient.
-c.colors.downloads.system.fg = 'none'
-
-# Color gradient interpolation system for download backgrounds.
-# Type: ColorSystem
-# Valid values:
-#   - rgb: Interpolate in the RGB color system.
-#   - hsv: Interpolate in the HSV color system.
-#   - hsl: Interpolate in the HSL color system.
-#   - none: Don't show a gradient.
-c.colors.downloads.system.bg = 'none'
-
-# Foreground color for downloads with errors.
-# Type: QtColor
-c.colors.downloads.error.fg = '#f6c177'
-
-# Background color for downloads with errors.
-# Type: QtColor
-c.colors.downloads.error.bg = '#191724'
-
-# Text color for the keyhint widget.
-# Type: QssColor
-c.colors.keyhint.fg = '#e0def4'
-
-# Highlight color for keys to complete the current keychain.
-# Type: QssColor
-c.colors.keyhint.suffix.fg = '#ebbcba'
-
-# Background color of the keyhint widget.
-# Type: QssColor
-c.colors.keyhint.bg = '#1f1d2e'
-
-# Foreground color for prompts.
-# Type: QssColor
-c.colors.prompts.fg = '#e0def4'
-
-# Border used around UI elements in prompts.
-# Type: String
-c.colors.prompts.border = '#908caa'
-
-# Background color for prompts.
-# Type: QssColor
-c.colors.prompts.bg = '#1f1d2e'
-
-# Foreground color for the selected item in filename prompts.
-# Type: QssColor
-c.colors.prompts.selected.fg = '#e0def4'
-
-# Background color for the selected item in filename prompts.
-# Type: QssColor
-c.colors.prompts.selected.bg = '#26233a'
-
-# Foreground color of the statusbar.
-# Type: QssColor
-c.colors.statusbar.normal.fg = '#ebbcba'
-
-# Background color of the statusbar.
-# Type: QssColor
-c.colors.statusbar.normal.bg = '#191724'
-
-# Foreground color of the statusbar in insert mode.
-# Type: QssColor
-c.colors.statusbar.insert.fg = '#31748f'
-
-# Background color of the statusbar in insert mode.
-# Type: QssColor
-c.colors.statusbar.insert.bg = '#191724'
-
-# Foreground color of the statusbar in passthrough mode.
-# Type: QssColor
-c.colors.statusbar.passthrough.fg = '#908caa'
-
-# Background color of the statusbar in passthrough mode.
-# Type: QssColor
-c.colors.statusbar.passthrough.bg = '#1f1d2e'
-
-# Foreground color of the statusbar in private browsing mode.
-# Type: QssColor
-c.colors.statusbar.private.fg = '#403d52'
-
-# Background color of the statusbar in private browsing mode.
-# Type: QssColor
-c.colors.statusbar.private.bg = '#eb6f92'
-
-# Foreground color of the statusbar in command mode.
-# Type: QssColor
-c.colors.statusbar.command.fg = '#eb6f92'
-
-# Background color of the statusbar in command mode.
-# Type: QssColor
-c.colors.statusbar.command.bg = '#191724'
-
-# Foreground color of the statusbar in caret mode.
-# Type: QssColor
-c.colors.statusbar.caret.fg = '#26233a'
-
-# Background color of the statusbar in caret mode.
-# Type: QssColor
-c.colors.statusbar.caret.bg = '#191724'
-
-# Foreground color of the statusbar in caret mode with a selection.
-# Type: QssColor
-c.colors.statusbar.caret.selection.fg = '#c4a7e7'
-
-# Background color of the statusbar in caret mode with a selection.
-# Type: QssColor
-c.colors.statusbar.caret.selection.bg = '#191724'
-
-# Background color of the progress bar.
-# Type: QssColor
-c.colors.statusbar.progress.bg = '#9ccfd8'
-
-# Default foreground color of the URL in the statusbar.
-# Type: QssColor
-c.colors.statusbar.url.fg = '#e0def4'
-
-# Foreground color of the URL in the statusbar on error.
-# Type: QssColor
-c.colors.statusbar.url.error.fg = '#f6c177'
-
-# Foreground color of the URL in the statusbar for hovered links.
-# Type: QssColor
-c.colors.statusbar.url.hover.fg = '#f6c177'
-
-# Foreground color of the URL in the statusbar on successful load
-# (http).
-# Type: QssColor
-c.colors.statusbar.url.success.http.fg = '#908caa'
-
-# Foreground color of the URL in the statusbar on successful load
-# (https).
-# Type: QssColor
-c.colors.statusbar.url.success.https.fg = '#908caa'
-
-# Foreground color of the URL in the statusbar when there's a warning.
-# Type: QssColor
-c.colors.statusbar.url.warn.fg = '#f6c177'
-
-# Background color of the tab bar.
-# Type: QssColor
-c.colors.tabs.bar.bg = '#191724'
-
-# Color gradient start for the tab indicator.
-# Type: QtColor
-c.colors.tabs.indicator.start = '#31748f'
-
-# Color gradient end for the tab indicator.
-# Type: QtColor
-c.colors.tabs.indicator.stop = '#ebbcba'
-
-# Color for the tab indicator on errors.
-# Type: QtColor
-c.colors.tabs.indicator.error = '#f6c177'
-
-# Foreground color of unselected odd tabs.
-# Type: QtColor
-c.colors.tabs.odd.fg = '#908caa'
-
-# Background color of unselected odd tabs.
-# Type: QtColor
-c.colors.tabs.odd.bg = '#191724'
-
-# Foreground color of unselected even tabs.
-# Type: QtColor
-c.colors.tabs.even.fg = '#908caa'
-
-# Background color of unselected even tabs.
-# Type: QtColor
-c.colors.tabs.even.bg = '#191724'
-
-# Foreground color of selected odd tabs.
-# Type: QtColor
-c.colors.tabs.selected.odd.fg = '#e0def4'
-
-# Background color of selected odd tabs.
-# Type: QtColor
-c.colors.tabs.selected.odd.bg = '#403d52'
-
-# Foreground color of selected even tabs.
-# Type: QtColor
-c.colors.tabs.selected.even.fg = '#e0def4'
-
-# Background color of selected even tabs.
-# Type: QtColor
-c.colors.tabs.selected.even.bg = '#403d52'
+c.url.searchengines = {'DEFAULT': 'https://search.brave.com/search?q={}', 
+                       'aw': 'https://wiki.archlinux.org/?search={}', 
+                       'yt': 'https://www.youtube.com/results?search_query={}'}
+
+## Editor (and arguments) to use for the `edit-*` commands. The following
+## placeholders are defined:  * `{file}`: Filename of the file to be
+## edited. * `{line}`: Line in which the caret is found in the text. *
+## `{column}`: Column in which the caret is found in the text. *
+## `{line0}`: Same as `{line}`, but starting from index 0. * `{column0}`:
+## Same as `{column}`, but starting from index 0.
+## Type: ShellCommand
+c.editor.command = ['kitty', 'nvim', '+call cursor({line},{column})', '{file}']
+
+## Allow JavaScript to read from or write to the clipboard. With
+## QtWebEngine, writing the clipboard as response to a user interaction
+## is always allowed.
+## Type: String
+## Valid values:
+##   - none: Disable access to clipboard.
+##   - access: Allow reading from and writing to the clipboard.
+##   - access-paste: Allow accessing the clipboard and pasting clipboard content.
+c.content.javascript.clipboard = 'access-paste'
+
+##############################################################################
+# Style
 
 # Value to use for `prefers-color-scheme:` for websites. The "light"
 # value is only available with QtWebEngine 5.15.2+. On older versions,
@@ -531,14 +136,14 @@ c.fonts.default_family = 'Source Code Pro'
 # Type: String
 c.fonts.default_size = '10pt'
 
+import rosepine
+# last argument (optional, default is False): enable the plain look for the menu rows
+rosepine.setup(c, 'rose-pine', True)
+
+###############################################################################
 # Bindings for normal mode
 config.bind("xb", "config-cycle statusbar.show always never")
 config.bind("xt", "config-cycle tabs.show always never")
 config.bind("xx", "config-cycle statusbar.show always never;; config-cycle tabs.show always never") 
 
-
-
-import rosepine
-# last argument (optional, default is False): enable the plain look for the menu rows
-rosepine.setup(c, 'rose-pine', True)
 

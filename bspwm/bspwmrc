@@ -26,6 +26,8 @@ wmname LG3D &
 pgrep -x sxhkd || sxhkd &
 polybar &
 
+$HOME/.config/polybar/launch.sh
+
 # set background (root window) color & root cursor type
 xsetroot -solid '#191724' -cursor_name left_ptr &
 
