@@ -50,7 +50,7 @@ c.tabs.show = 'always'
 
 ## Page(s) to open at the start.
 ## Type: List of FuzzyUrl, or FuzzyUrl
-c.url.start_pages = ['https://search.brave.com/search?q={}']
+c.url.start_pages = ['https://search.brave.com/search']
 
 
 # Page to open if :open -t/-b/-w is used without URL. Use `about:blank`
