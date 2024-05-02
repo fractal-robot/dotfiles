@@ -36,7 +36,7 @@ if status is-interactive
 end
 
 function fish_greeting
-	# /.system/scripts/ufetch
+	# ~/.system/scripts/ufetch
 	nerdfetch
 end
 

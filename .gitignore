@@ -3,10 +3,13 @@ tmux/plugins/
 qutebrowser/quickmarks
 qutebrowser/config-defaults.py
 qutebrowser/bookmarks/
+qutebrowser/qsettings/
 
 fish/completions/
 fish/fish_variables
 fish/functions/
+
+kitty/themes/
 
 nvim/lazy-lock.json
 

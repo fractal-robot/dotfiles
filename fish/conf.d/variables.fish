@@ -7,15 +7,13 @@ set -x XDG_CACHE_HOME "$HOME/.cache"
 
 if status is-interactive
 set -x EDITOR "/bin/nvim"
+set -x BROWSER "usr/share/applications/org.qutebrowser.qutebrowser.desktop"
 set -x DEBUGINFOD_URLS "https://debuginfod.archlinux.org"
 set -x MANPAGER "nvim +Man!"
 
 set -Ux FZF_DEFAULT_OPTS "
---color=fg:#908caa,bg:#191724,hl:#ebbcba
---color=fg+:#e0def4,bg+:#26233a,hl+:#ebbcba
---color=border:#403d52,header:#31748f,gutter:#191724
---color=spinner:#f6c177,info:#9ccfd8,separator:#403d52
---color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa"
+--color fg:#ebdbb2,bg:#282828,hl:#fabd2f,fg+:#ebdbb2,bg+:#3c3836,hl+:#fabd2f
+--color info:#83a598,prompt:#bdae93,spinner:#fabd2f,pointer:#83a598,marker:#fe8019,header:#665c54"
 end 
 
 set -x HISTFILE "$XDG_STATE_HOME/bash/history"

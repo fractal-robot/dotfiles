@@ -106,7 +106,7 @@ return {
 					vim.notify("Diagnostics " .. state, vim.log.levels.INFO)
 				end
 
-				map("<leader>t", toggle_diagnostics, "[T]oogle diagnostics")
+				map("<leader>td", toggle_diagnostics, "Toggle [D]iagnostics")
 			end,
 		})
 

@@ -1,4 +1,4 @@
-local function toogle_reading_mode()
+local function toggle_reading_mode()
   if vim.o.cursorcolumn == true then
     vim.o.cursorcolumn = false
     vim.o.sidescroll = 1060
@@ -11,4 +11,4 @@ local function toogle_reading_mode()
   end
 end
 
-vim.keymap.set("n", "<leader>R", toogle_reading_mode, { desc = "Toogle [R]eading mode", noremap = true, silent = true })
+vim.keymap.set("n", "<leader>tr", toggle_reading_mode, { desc = "toggle [R]eading mode", noremap = true })

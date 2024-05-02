@@ -1,21 +1,23 @@
 return {
-	"3rd/image.nvim",
+  "3rd/image.nvim",
+  priority = 1000,
 
-	config = function()
-		require("image").setup({
-			backend = "kitty",
-			integrations = {
-				neorg = {
-					enabled = true,
-					clear_in_insert_mode = false,
-					download_remote_images = true,
-					only_render_image_at_cursor = true,
-					filetypes = { "norg" },
-				},
-			},
+  dependencies = { "luarocks.nvim" },
 
-			window_overlap_clear_enabled = true,
+  config = function()
+    require("image").setup({
+      backend = "kitty",
+      integrations = {
+        neorg = {
+          enabled = true,
+          clear_in_insert_mode = true,
+          download_remote_images = true,
+          filetypes = { "norg" },
+        },
+      },
 
-		})
-	end,
+      window_overlap_clear_enabled = true,
+      window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
+    })
+  end,
 }

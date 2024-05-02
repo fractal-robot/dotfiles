@@ -24,7 +24,7 @@ config.load_autoconfig(False)
 #   - adblock: Use Brave's ABP-style adblocker
 #   - hosts: Use hosts blocking
 #   - both: Use both hosts blocking and Brave's ABP-style adblocker
-c.content.blocking.method = 'adblock'
+c.content.blocking.method = 'both'
 
 # Enable smooth scrolling for web pages. Note smooth scrolling does not
 # work with the `:scroll-px` command.
@@ -103,6 +103,24 @@ c.content.javascript.clipboard = 'access-paste'
 ##############################################################################
 # Style
 
+## Which algorithm to use for modifying how colors are rendered with
+## darkmode. The `lightness-cielab` value was added with QtWebEngine 5.14
+## and is treated like `lightness-hsl` with older QtWebEngine versions.
+## Type: String
+## Valid values:
+##   - lightness-cielab: Modify colors by converting them to CIELAB color space and inverting the L value. Not available with Qt < 5.14.
+##   - lightness-hsl: Modify colors by converting them to the HSL color space and inverting the lightness (i.e. the "L" in HSL).
+##   - brightness-rgb: Modify colors by subtracting each of r, g, and b from their maximum value.
+c.colors.webpage.darkmode.algorithm = 'lightness-hsl'
+
+## Render all web contents using a dark theme. Example configurations
+## from Chromium's `chrome://flags`: - "With simple HSL/CIELAB/RGB-based
+## inversion": Set   `colors.webpage.darkmode.algorithm` accordingly, and
+## set `colors.webpage.darkmode.policy.images` to `never`.  - "With
+## selective image inversion": qutebrowser default settings.
+## Type: Bool
+c.colors.webpage.darkmode.enabled = True
+
 # Value to use for `prefers-color-scheme:` for websites. The "light"
 # value is only available with QtWebEngine 5.15.2+. On older versions,
 # it is the same as "auto". The "auto" value is broken on QtWebEngine
@@ -114,14 +132,6 @@ c.content.javascript.clipboard = 'access-paste'
 #   - light: Force a light theme.
 #   - dark: Force a dark theme.
 c.colors.webpage.preferred_color_scheme = 'dark'
-
-# Render all web contents using a dark theme. Example configurations
-# from Chromium's `chrome://flags`: - "With simple HSL/CIELAB/RGB-based
-# inversion": Set   `colors.webpage.darkmode.algorithm` accordingly, and
-# set `colors.webpage.darkmode.policy.images` to `never`.  - "With
-# selective image inversion": qutebrowser default settings.
-# Type: Bool
-c.colors.webpage.darkmode.enabled = True
 
 # Default font families to use. Whenever "default_family" is used in a
 # font setting, it's replaced with the fonts listed here. If set to an
@@ -145,5 +155,3 @@ rosepine.setup(c, 'rose-pine', True)
 config.bind("xb", "config-cycle statusbar.show always never")
 config.bind("xt", "config-cycle tabs.show always never")
 config.bind("xx", "config-cycle statusbar.show always never;; config-cycle tabs.show always never") 
-
-

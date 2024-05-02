@@ -44,23 +44,22 @@ return {
 				},
 
 				messages = {
-					view = "notify",          -- default view for messages
-					view_error = "notify",  -- view for errors
-					view_warn = "notify",   -- view for warnings
+					view = "notify", -- default view for messages
+					view_error = "notify", -- view for errors
+					view_warn = "notify", -- view for warnings
 					view_history = "messages", -- view for :messages
 					view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
 				},
 
-				--[[
 				routes = {
-					{
-						filter = {
-							event = "msg_show",
-							kind = "",
-							find = "written",
-						},
-						opts = { skip = true },
-					},
+					-- {
+					-- 	filter = {
+					-- 		event = "msg_show",
+					-- 		kind = "",
+					-- 		find = "written",
+					-- 	},
+					-- 	opts = { skip = true },
+					-- },
 					{
 						filter = {
 							find = "-- VISUAL --",
@@ -69,30 +68,11 @@ return {
 					},
 					{
 						filter = {
-							find = "lines yanked",
-						},
-						opts = { skip = true },
-					},
-					{
-						filter = {
-							find = "E486",
-						},
-						opts = { skip = true },
-					},
-					{
-						filter = {
-							find = "1 change: before",
-						},
-						opts = { skip = true },
-					},
-					{
-						filter = {
-							find = "1 change: after",
+							find = "Error in decoration provider treesitter/highlighter",
 						},
 						opts = { skip = true },
 					},
 				},
-				--]]
 
 				views = {
 					cmdline_popup = {
