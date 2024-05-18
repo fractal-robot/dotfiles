@@ -13,7 +13,6 @@ local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 -- local menubar = require("menubar")
-local hotkeys_popup = require("awful.hotkeys_popup")
 local bling = require("bling")
 
 --------------------------------------------------------------------------------
@@ -22,18 +21,19 @@ local bling = require("bling")
 
 dpi = require("beautiful.xresources").apply_dpi
 
+beautiful.gap_single_client = false
+
 require("main.error-handling")
 require("main.signals")
 
-require("awful.hotkeys_popup.keys")
-
-beautiful.init(gears.filesystem.get_configuration_dir() .. "themes/rose-pine-custom/theme.lua")
+beautiful.init(gears.filesystem.get_configuration_dir() .. "themes/gruvbox-material-medium-custom/theme.lua")
+beautiful.border_single_client = false
 
 local main = {
-  layouts = require("main.layouts"),
-  rules = require("main.rules"),
-  tags = require("main.tags"),
-  -- menu = require("main.menu"),
+	layouts = require("main.layouts"),
+	rules = require("main.rules"),
+	tags = require("main.tags"),
+	-- menu = require("main.menu"),
 }
 
 RC = {} -- global namespace
@@ -41,16 +41,20 @@ RC.layouts = main.layouts()
 RC.tags = main.tags()
 RC.vars = require("main.user-variables")
 
+awful.screen.connect_for_each_screen(function(s)
+	s.tags[1]:view_only()
+end)
+
 --------------------------------------------------------------------------------
 --- bindings -------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
 local binding = {
-  globalbuttons = require("binding.globalbuttons"),
-  clientbuttons = require("binding.clientbuttons"),
-  globalkeys = require("binding.globalkeys"),
-  bindtotags = require("binding.bindtotags"),
-  clientkeys = require("binding.clientkeys"),
+	globalbuttons = require("binding.globalbuttons"),
+	clientbuttons = require("binding.clientbuttons"),
+	globalkeys = require("binding.globalkeys"),
+	bindtotags = require("binding.bindtotags"),
+	clientkeys = require("binding.clientkeys"),
 }
 
 RC.globalkeys = binding.globalkeys()
@@ -66,3 +70,5 @@ awful.rules.rules = main.rules(binding.clientkeys(), binding.clientbuttons())
 --------------------------------------------------------------------------------
 
 require("deco.statusbar")
+
+gears.wallpaper.set("#282828")

@@ -1,6 +1,6 @@
 local function format_selection()
 	local filetype = vim.bo.filetype
-	if filetype ~= "txt" and filetype ~= "norg" then
+	if filetype ~= "txt" and filetype ~= "norg" and filetype ~= "markdown" then
 		vim.notify("Cannot format width: invalid filetype", vim.log.levels.WARN)
 		return
 	end

@@ -2,11 +2,11 @@ return {
 	"neovim/nvim-lspconfig",
 
 	dependencies = {
-		{ "williamboman/mason.nvim",                  config = true },
-		{ "williamboman/mason-lspconfig.nvim",        opts = { ensure_installed = { "lua_ls" } } },
+		{ "williamboman/mason.nvim", config = true },
+		{ "williamboman/mason-lspconfig.nvim", opts = { ensure_installed = { "lua_ls" } } },
 		{ "WhoIsSethDaniel/mason-tool-installer.nvim" },
-		{ "smjonas/inc-rename.nvim",                  opts = {} }, -- rename using noice.nvim
-		{ "folke/neodev.nvim",                        opts = {} },
+		{ "smjonas/inc-rename.nvim", opts = {} }, -- rename using noice.nvim
+		{ "folke/neodev.nvim", opts = {} },
 	},
 
 	config = function()
@@ -18,7 +18,7 @@ return {
 		--  -> capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
 		--  -> settings (table): Override the default settings passed when initializing the server.
 		--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
-		--
+
 		local servers = {
 			clangd = {},
 			lua_ls = {
@@ -129,6 +129,17 @@ return {
 					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
 					require("lspconfig")[server_name].setup(server)
 				end,
+			},
+		})
+
+		require("lspconfig").ltex.setup({
+			settings = {
+				ltex = {
+					language = "en-US",
+					additionalRules = {
+						languageModel = "~/system/models/ngrams/",
+					},
+				},
 			},
 		})
 	end,

@@ -13,7 +13,8 @@ if status is-interactive
 	starship init fish | source
 	zoxide init fish | source
 
-	fish_config theme choose rose-pine
+  # fish_config theme choose rose-pine
+  theme_gruvbox dark medium
 
 	# test $TERM != "tmux-256color"; and exec tmux
 
@@ -38,6 +39,13 @@ end
 function fish_greeting
 	# ~/.system/scripts/ufetch
 	nerdfetch
+  echo -ne "\n"
+  curl -f 'wttr.in/Orléans?format=%c%C+at+%f'
+  echo -ne "\n\n"
+  backup-status.sh
 end
 
 
+
+# Created by `pipx` on 2024-05-02 23:15:08
+set PATH $PATH /home/usr/.local/bin

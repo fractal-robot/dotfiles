@@ -34,7 +34,7 @@ function _M.get(_)
 			c.minimized = true
 		end, { description = "Minimize", group = "client" }),
 
-		awful.key({ modkey }, "a", function(c)
+		awful.key({ modkey }, "i", function(c)
 			c.maximized = not c.maximized
 			c:raise()
 		end, { description = "(un)Maximize", group = "client" })

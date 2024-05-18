@@ -3,41 +3,8 @@ local bling = require("bling")
 
 local _M = {}
 
--- function _M.get(_)
--- 	tags = {}
--- 	awful.screen.connect_for_each_screen(function(s)
--- 		tags[s] = awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, RC.layouts[1])
--- 	end)
--- 	return tags
--- end
-
 function _M.get(_)
 	local tags = {}
-
-	-- local tagpairs = {
-	-- 	--  names  = { "term", "net", "edit", "place", 5, 6, 7, 8, 9 },
-	-- 	names = {
-	-- 		"I",
-	-- 		"II",
-	-- 		"III",
-	-- 		"IV",
-	-- 		"V",
-	-- 		"VI",
-	-- 		"VII",
-	-- 		"floating",
-	-- 	},
-	--
-	-- 	layout = {
-	-- 		RC.layouts[1],
-	-- 		RC.layouts[1],
-	-- 		RC.layouts[1],
-	-- 		RC.layouts[1],
-	-- 		RC.layouts[1],
-	-- 		RC.layouts[1],
-	-- 		RC.layouts[1],
-	-- 		RC.layouts[4],
-	-- 	},
-	-- }
 
 	awful.screen.connect_for_each_screen(function(s)
 		-- Each screen has its own tag table.
@@ -55,7 +22,8 @@ function _M.get(_)
 		})
 		awful.tag.add("maximized", {
 			screen = screen[s],
-			layout = awful.layout.suit.max.fullscreen,
+			-- layout = awful.layout.suit.max.fullscreen,
+			layout = awful.layout.suit.max,
 			index = 3,
 		})
 		awful.tag.add("square", {

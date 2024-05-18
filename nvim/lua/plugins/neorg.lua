@@ -4,6 +4,7 @@ return {
 	"nvim-neorg/neorg",
 	lazy = false,
 	version = "*", -- Pin Neorg to the latest stable release
+
 	dependencies = {
 		-- "max397574/neorg-contexts",
 		"3rd/image.nvim",
@@ -19,6 +20,7 @@ return {
 				["core.autocommands"] = {},
 				["core.integrations.treesitter"] = {},
 				["core.neorgcmd"] = {},
+				["core.export"] = {},
 
 				["core.integrations.image"] = {},
 				["core.completion"] = {

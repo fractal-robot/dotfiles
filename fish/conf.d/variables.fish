@@ -7,7 +7,6 @@ set -x XDG_CACHE_HOME "$HOME/.cache"
 
 if status is-interactive
 set -x EDITOR "/bin/nvim"
-set -x BROWSER "usr/share/applications/org.qutebrowser.qutebrowser.desktop"
 set -x DEBUGINFOD_URLS "https://debuginfod.archlinux.org"
 set -x MANPAGER "nvim +Man!"
 
@@ -27,3 +26,4 @@ set -x _JAVA_OPTIONS -Djava.util.prefs.userRoot="$XDG_CONFIG_HOME/java"
 set -x XAUTHORITY "$XDG_RUNTIME_DIR/Xauthority"
 set -x GOPATH "$XDG_DATA_HOME/go"
 set -x GTK2_RC_FILES "$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
+set -x GTK_IM_MODULE "xim"
