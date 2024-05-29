@@ -113,7 +113,7 @@ vim.cmd([[
 vim.keymap.set("n", "<Esc>", "<cmd>write<cr>", { noremap = true })
 
 -- vim.keymap.set("n", "gp", '"_d"+p', { noremap = true, silent = true })
-vim.keymap.set("v", "gp", '"_d"+p', { noremap = true })
+vim.keymap.set("v", "gp", '"_d"+P', { noremap = true })
 
 --------------------
 -- disabled commands

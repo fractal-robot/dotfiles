@@ -6,7 +6,7 @@ local modkey = RC.vars.modkey
 
 function _M.get(_)
 	local clientkeys = gears.table.join(
-		awful.key({ modkey }, "f", function(c)
+		awful.key({ modkey }, ".", function(c)
 			c.fullscreen = not c.fullscreen
 			c:raise()
 		end, { description = "toggle fullscreen", group = "client" }),

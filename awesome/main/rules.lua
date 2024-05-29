@@ -12,7 +12,6 @@ function _M.get(clientkeys, clientbuttons)
 		{
 			rule = {},
 			properties = {
-
 				border_width = beautiful.border_width,
 				border_color = beautiful.border_normal,
 				focus = awful.client.focus.filter,
@@ -63,6 +62,22 @@ function _M.get(clientkeys, clientbuttons)
 
 		{
 			rule_any = {},
+		},
+
+		{
+			rule = { class = "GLava" },
+			properties = {
+				sticky = true,
+				focusable = false,
+				border_width = 0,
+				below = true,
+				ontop = false,
+				maximized_horizontal = true,
+				maximized_vertical = true,
+			},
+			callback = function(c)
+				c:lower() -- Ensure the window is below other windows
+			end,
 		},
 
 		-- Set Firefox to always map on the tag named "2" on screen 1.

@@ -7,3 +7,6 @@
 [submodule "awesome/lain"]
 	path = awesome/lain
 	url = https://github.com/lcpz/lain
+[submodule "fish/fish-gruvbox"]
+	path = fish/fish/fish-gruvbox
+	url = https://github.com/Jomik/fish-gruvbox

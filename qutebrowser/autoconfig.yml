@@ -6,5 +6,5 @@
 
 config_version: 2
 settings:
-  content.blocking.method:
-    global: adblock
+  content.geolocation:
+    https://openweathermap.org: false

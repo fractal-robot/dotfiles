@@ -39,13 +39,20 @@ end
 function fish_greeting
 	# ~/.system/scripts/ufetch
 	nerdfetch
-  echo -ne "\n"
-  curl -f 'wttr.in/Orléans?format=%c%C+at+%f'
-  echo -ne "\n\n"
-  backup-status.sh
+  # echo -ne "\n"
+  # curl -f 'wttr.in/Orléans?format=%c%C+at+%f'
+  # echo -ne "\n\n"
+  # backup-status.sh
 end
 
-
+# function yy
+# 	set tmp (mktemp -t "yazi-cwd.XXXXXX")
+# 	yazi $argv --cwd-file="$tmp"
+# 	if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+# 		cd -- "$cwd"
+# 	end
+# 	rm -f -- "$tmp"
+# end
 
 # Created by `pipx` on 2024-05-02 23:15:08
 set PATH $PATH /home/usr/.local/bin

@@ -5,6 +5,7 @@
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
+local gears = require("gears")
 
 local gfs = require("gears.filesystem")
 local themes_path = gfs.get_themes_dir()
@@ -18,7 +19,12 @@ theme.bg_normal = "#282828"
 theme.bg_systray = theme.bg_normal
 theme.bg_focus = "#32302f"
 theme.bg_urgent = "#ea6962"
+
+theme.bg_alt = "#32302f"
 -- theme.bg_minimize   = "#444444"
+
+theme.sep_width = dpi(2)
+theme.border_width = dpi(2)
 
 theme.fg_normal = "#d4be98"
 
@@ -27,6 +33,10 @@ theme.border_width = dpi(2.5)
 theme.border_normal = theme.bg_normal
 theme.border_focus = "#928374"
 theme.border_marked = "#ea6962"
+
+-- bar
+theme.bar_bg = theme.bg_normal
+theme.bar_bg_alt = theme.bg_alt
 
 -- There are other variable sets
 -- overriding the default one when
@@ -109,6 +119,7 @@ theme.layout_cornerne = themes_path .. "default/layouts/cornernew.png"
 theme.layout_cornersw = themes_path .. "default/layouts/cornersww.png"
 theme.layout_cornerse = themes_path .. "default/layouts/cornersew.png"
 
+-- theme.taglist_shape_focus = gears.shape.hexagon
 -- theme.wallpaper = nil
 -- theme.wallpaper = nil
 -- theme.wallpaper_bg = "#282828"

@@ -1,6 +1,9 @@
 local gears = require("gears")
 local awful = require("awful")
 local hotkeys_popup = require("awful.hotkeys_popup")
+local lain = require("lain")
+local naughty = require("naughty")
+local beautiful = require("beautiful")
 
 local _M = {}
 local modkey = RC.vars.modkey
@@ -44,10 +47,6 @@ function _M.get(_)
 			awful.spawn.with_shell('maim -s ~/screenshot/$(date +"screenshot-%d-%m-%Y-%H-%M-%S.png")')
 		end, { description = "Screenshot to clipboard", group = "Utils" }),
 
-		awful.key({ modkey }, "p", function()
-			awful.spawn.with_shell("rofi-rbw")
-		end, { description = "Password manager", group = "Utils" }),
-
 		awful.key(
 			{ modkey },
 			"u",
@@ -79,6 +78,13 @@ function _M.get(_)
 		-------------------
 		-------------------
 
+		awful.key({ modkey }, "d", function()
+			awful.client.focus.byidx(1)
+		end, { description = "focus next by index", group = "client" }),
+		awful.key({ modkey }, "g", function()
+			awful.client.focus.byidx(-1)
+		end, { description = "focus previous by index", group = "client" }),
+
 		-----------------
 		-- Media controls
 		awful.key({ modkey }, "x", function()
@@ -92,16 +98,15 @@ function _M.get(_)
 		end, { description = "Next", group = "Media" }),
 
 		awful.key({ modkey }, "w", function()
-			os.execute("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-")
-		end, { description = "Raise 5%", group = "Media" }),
-		awful.key({ modkey }, "b", function()
-			os.execute("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+")
+			os.execute("pamixer --decrease 5")
+			require("ui.widgets.volume").update()
 		end, { description = "Lower 5%", group = "Media" }),
-		-----------------
-		-----------------
+		awful.key({ modkey }, "b", function()
+			os.execute("pamixer --increase 5")
+			require("ui.widgets.volume").update()
+		end, { description = "Raise 5%", group = "Media" }),
 
 		-- I don't know how to name it for now
-
 		awful.key({ modkey, "Control" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
 		awful.key({ modkey, "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
 
@@ -118,7 +123,20 @@ function _M.get(_)
 			if c then
 				c:emit_signal("request::activate", "key.unminimize", { raise = true })
 			end
-		end, { description = "restore minimized", group = "client" })
+		end, { description = "restore minimized", group = "client" }),
+
+		awful.key(
+			{ modkey },
+			"f",
+			function()
+				Dashboard.screen = awful.screen.focused()
+				Dashboard.visible = not Dashboard.visible
+			end,
+			--   function()
+			-- 	Dashboard.visible = false
+			-- end,
+			{ description = "Dashboard toggle", group = "custom" }
+		)
 	)
 
 	return Globalkeys
