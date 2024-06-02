@@ -12,7 +12,7 @@ local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
-theme.font = "Source Code Pro"
+theme.font = "Roboto 12"
 theme.barfont = font
 
 theme.bg_normal = "#282828"
@@ -22,6 +22,21 @@ theme.bg_urgent = "#ea6962"
 
 theme.bg_alt = "#32302f"
 -- theme.bg_minimize   = "#444444"
+
+theme.red = "#cc241d"
+theme.red_light = "#fb4934"
+theme.green = "#98971a"
+theme.green_light = "#b8bb26"
+theme.yellow = "#d79921"
+theme.yellow_light = "#fabd2d"
+theme.blue = "#458588"
+theme.blue_light = "#83a598"
+theme.purple = "#b16286"
+theme.purple_light = "#d3869b"
+theme.aqua = "#689d6a"
+theme.aqua_light = "#8ec07c"
+theme.orange = "#d65d0e"
+theme.orange_light = "#fe8019"
 
 theme.sep_width = dpi(2)
 theme.border_width = dpi(2)

@@ -9,7 +9,7 @@ return wibox.widget({
 
 	{
 		widget = wibox.container.background,
-		bg = beautiful.yellow_light,
+		bg = beautiful.green_light,
 
 		{
 			widget = wibox.container.margin,
@@ -18,14 +18,14 @@ return wibox.widget({
 
 			{
 				widget = wibox.widget.textbox,
-				markup = markup.fontfg("Symbols Nerd Font 12", beautiful.bg_normal, "󰥔"),
+				markup = markup.fontfg("Symbols Nerd Font 12", beautiful.bg_normal, ""),
 			},
 		},
 	},
 
 	{
 		widget = wibox.container.background,
-		bg = beautiful.yellow,
+		bg = beautiful.green,
 
 		{
 			widget = wibox.container.margin,
@@ -34,7 +34,7 @@ return wibox.widget({
 
 			wibox.widget({
 				widget = wibox.widget.textclock,
-				format = markup.fg.color(beautiful.bg_normal, "%A, %B %_d"),
+				format = markup.fg.color(beautiful.bg_normal, "%H:%M"),
 			}),
 		},
 	},

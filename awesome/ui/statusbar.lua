@@ -2,14 +2,18 @@ local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local dpi = require("beautiful.xresources").apply_dpi
-
 local gears = require("gears")
 
--- local Day_info = require("ui.day-info")
+local lain = require("lain")
+local markup = lain.util.markup
+
+-- separator
+local separator = wibox.widget({
+	widget = wibox.widget.textbox,
+	markup = "  ",
+})
 
 awful.screen.connect_for_each_screen(function(s)
-	s.textclock = wibox.widget.textclock()
-
 	s.taglist = awful.widget.taglist({
 		screen = s,
 		filter = awful.widget.taglist.filter.all,
@@ -31,7 +35,7 @@ awful.screen.connect_for_each_screen(function(s)
 		screen = s,
 		-- forced_height = dpi(80) + beautiful.border_width,
 		-- height = dpi(34),
-		height = dpi(38),
+		-- height = dpi(38),
 		bg = beautiful.bar_bg,
 	})
 
@@ -53,9 +57,15 @@ awful.screen.connect_for_each_screen(function(s)
 
 				{ -- center widgets
 					layout = wibox.layout.fixed.horizontal,
+					separator,
+					require("ui.widgets.calendar"),
+					separator,
 					require("ui.widgets.clock"),
-					require("ui.widgets.playerctl").setup(),
-					require("ui.widgets.backup").setup(),
+					separator,
+					require("ui.widgets.backup"),
+					separator,
+					require("ui.widgets.volume").widget,
+					separator,
 				},
 
 				{ -- Right widgets

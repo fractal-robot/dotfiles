@@ -71,8 +71,6 @@ awful.rules.rules = main.rules(binding.clientkeys(), binding.clientbuttons())
 --- theme ----------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
--- require("ui.statusbar")
+require("ui.statusbar")
 
 gears.wallpaper.set("#282828")
-
-require("dashboard")

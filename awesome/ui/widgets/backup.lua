@@ -1,59 +1,54 @@
 local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
+local lain = require("lain")
+local markup = lain.util.markup
 local dpi = require("beautiful.xresources").apply_dpi
 
-local _M = {}
+return wibox.widget({
+	layout = wibox.layout.align.horizontal,
 
-function _M.setup()
-	local color = "#ea6962"
+	{
+		widget = wibox.container.background,
+		bg = beautiful.blue_light,
 
-	local border = wibox.widget({
-		widget = wibox.container.margin,
-		margins = dpi(1),
-		color = "",
-	})
-
-	local watcher = awful.widget.watch("cat /tmp/backup.status", 10, function(widget, stdout)
-		if stdout == nil then
-			return
-		end
-
-		stdout = stdout:match("^%s*(.-)%s*$")
-
-		if stdout == "DONE" then
-			color = "#a9b665"
-		elseif stdout == "PENDING" then
-			color = "#d8a657"
-		else
-			color = "#ea6962"
-		end
-
-		widget:set_markup("Backup: <span foreground='" .. color .. "' weight='bold'>" .. stdout .. "</span>")
-		border.color = color
-	end)
-
-	return wibox.widget({
-		widget = wibox.container.margin,
-		-- right = dpi(2),
-		-- left = dpi(2),
-		margins = dpi(2),
 		{
-			widget = wibox.container.background,
-			bg = beautiful.bar_bg_alt,
+			widget = wibox.container.margin,
+			left = dpi(6),
+			right = dpi(6),
+
 			{
-				widget = border,
-				{
-					widget = wibox.container.margin,
-					left = dpi(8),
-					right = dpi(8),
-					{
-						widget = watcher,
-					},
-				},
+				widget = wibox.widget.textbox,
+				markup = markup.fontfg("Symbols Nerd Font 11", beautiful.bg_normal, ""),
 			},
 		},
-	})
-end
+	},
 
-return _M
+	{
+		widget = wibox.container.background,
+		bg = beautiful.blue,
+
+		{
+			widget = wibox.container.margin,
+			left = dpi(6),
+			right = dpi(6),
+
+			{
+				widget = awful.widget.watch("cat /tmp/backup.status", 10, function(widget, stdout)
+					if stdout == nil then
+						return
+					end
+
+					stdout = stdout:match("^%s*(.-)%s*$")
+					widget:set_markup(
+						"<span foreground='"
+							.. beautiful.bg_normal
+							.. "'>"
+							.. stdout:gsub("^%l", string.upper)
+							.. "</span>"
+					)
+				end),
+			},
+		},
+	},
+})
