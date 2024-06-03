@@ -6,38 +6,24 @@ local modkey = RC.vars.modkey
 
 function _M.get(_)
 	local clientkeys = gears.table.join(
-		awful.key({ modkey }, ".", function(c)
-			c.fullscreen = not c.fullscreen
-			c:raise()
-		end, { description = "toggle fullscreen", group = "client" }),
-
-		awful.key(
-			{ modkey, "Control" },
-			"space",
-			awful.client.floating.toggle,
-			{ description = "toggle floating", group = "client" }
-		),
-
-		awful.key({ modkey, "Shift" }, "c", function(c)
+		awful.key({ modkey }, "s", function(c)
 			c:kill()
-		end, { description = "close", group = "client" }),
+		end, { description = "Close", group = "Client" }),
 
 		awful.key({ modkey }, "f", function(c)
 			c:swap(awful.client.getmaster())
-		end, { description = "Move to master", group = "client" }),
+		end, { description = "Move to master", group = "Client" }),
+
+		awful.key({ modkey }, "d", function(c)
+			c.maximized = not c.maximized
+			c:raise()
+		end, { description = "Toggle maximized", group = "Client" }),
+
+		------------------------------
 
 		awful.key({ modkey }, "o", function(c)
 			c:move_to_screen()
-		end, { description = "move to screen", group = "client" }),
-
-		awful.key({ modkey }, "n", function(c)
-			c.minimized = true
-		end, { description = "Minimize", group = "client" }),
-
-		awful.key({ modkey }, "i", function(c)
-			c.maximized = not c.maximized
-			c:raise()
-		end, { description = "(un)Maximize", group = "client" })
+		end, { description = "Move to screen", group = "Client" })
 	)
 
 	return clientkeys

@@ -9,6 +9,9 @@ local gears = require("gears")
 
 local gfs = require("gears.filesystem")
 local themes_path = gfs.get_themes_dir()
+local cus
+
+local custom_theme_path = gfs.get_configuration_dir()
 
 local theme = {}
 
@@ -71,7 +74,11 @@ theme.taglist_font = "Symbols Nerd Font 16"
 
 theme.taglist_fg_focus = theme.bg_normal
 theme.taglist_bg_focus = theme.green
+
 theme.taglist_fg_toggled = theme.yellow
+
+theme.taglist_fg_urgent = theme.red_light
+theme.taglist_bg_urgent = theme.bg_normal
 
 theme.notification_bg = theme.bg_urgent
 theme.notification_fg = theme.fg
@@ -83,8 +90,10 @@ theme.notification_fg = theme.fg
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
 theme.menu_submenu_icon = themes_path .. "default/submenu.png"
-theme.menu_height = dpi(15)
-theme.menu_width = dpi(100)
+theme.menu_height = dpi(23)
+theme.menu_width = dpi(200)
+theme.menu_fg_focus = theme.bg_normal
+theme.menu_bg_focus = theme.fg_normal
 
 -- You can add as many variables as
 -- you wish and access them by using
@@ -142,7 +151,8 @@ theme.layout_cornerse = themes_path .. "default/layouts/cornersew.png"
 -- theme.wallpaper_bg = "#282828"
 
 -- Generate Awesome icon:
-theme.awesome_icon = theme_assets.awesome_icon(theme.menu_height, theme.bg_focus, theme.fg_focus)
+theme.awesome_icon = theme_assets.awesome_icon(theme.menu_height, theme.fg_normal, theme.bg_normal)
+-- theme.awesome_icon = custom_theme_path .. "themes/archlinux-512.png"
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.

@@ -29,9 +29,6 @@ awful.screen.connect_for_each_screen(function(s)
 	s.wibox = awful.wibar({
 		position = "bottom",
 		screen = s,
-		-- forced_height = dpi(80) + beautiful.border_width,
-		-- height = dpi(34),
-		-- height = dpi(38),
 		bg = beautiful.bar_bg,
 	})
 
@@ -53,6 +50,8 @@ awful.screen.connect_for_each_screen(function(s)
 
 				{ -- center widgets
 					layout = wibox.layout.fixed.horizontal,
+					require("ui.widgets.menu"),
+					separator,
 					require("ui.widgets.cpu"),
 					separator,
 					require("ui.widgets.mem"),

@@ -16,17 +16,17 @@ function _M.get(_)
 		-- layout = awful.layout.suit.floating,
 		-- layout = awful.layout.suit.fair,
 
-		awful.tag.add("", {
+		awful.tag.add("󱓻", {
 			screen = screen[s],
 			layout = lain.layout.centerwork,
 			index = 1,
 		})
-		awful.tag.add("󰎚", {
+		awful.tag.add("", {
 			screen = screen[s],
 			layout = lain.layout.centerwork,
 			index = 2,
 		})
-		awful.tag.add("󱓻", {
+		awful.tag.add("󰎚", {
 			screen = screen[s],
 			layout = lain.layout.centerwork,
 			index = 3,

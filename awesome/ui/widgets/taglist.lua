@@ -29,6 +29,8 @@ awful.screen.connect_for_each_screen(function(s)
 					local tags = {}
 					if client then
 						tags = client:tags()
+					else
+						self.fg = beautiful.fg_normal
 					end
 
 					for _, tag in pairs(tags) do

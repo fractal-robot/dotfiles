@@ -61,10 +61,6 @@ function _M.get(clientkeys, clientbuttons)
 		},
 
 		{
-			rule_any = {},
-		},
-
-		{
 			rule = { class = "GLava" },
 			properties = {
 				sticky = true,
@@ -80,8 +76,7 @@ function _M.get(clientkeys, clientbuttons)
 			end,
 		},
 
-		{ rule = { class = "obsidian" }, properties = { tag = "2" } },
-		{ rule = { class = "qutebrowser" }, properties = { tag = "1" } },
+		{ rule = { class = "obsidian" }, properties = { tag = "󰎚" } },
 	}
 
 	return rules

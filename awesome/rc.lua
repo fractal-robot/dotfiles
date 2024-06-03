@@ -15,6 +15,8 @@ local naughty = require("naughty")
 -- local menubar = require("menubar")
 local bling = require("bling")
 
+bling.module.window_swallowing.start()
+
 --------------------------------------------------------------------------------
 --- config ---------------------------------------------------------------------
 --------------------------------------------------------------------------------
@@ -44,7 +46,7 @@ RC.vars = require("main.user-variables")
 awful.layout.layouts = RC.layouts
 
 awful.screen.connect_for_each_screen(function(s)
-	s.tags[1]:view_only()
+	s.tags[2]:view_only()
 end)
 
 --------------------------------------------------------------------------------
@@ -71,6 +73,9 @@ awful.rules.rules = main.rules(binding.clientkeys(), binding.clientbuttons())
 --- theme ----------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
+require("ui.widgets.taglist")
 require("ui.statusbar")
 
 gears.wallpaper.set("#282828")
+
+--  󰎚 󱓻

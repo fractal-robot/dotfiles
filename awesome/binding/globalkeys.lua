@@ -4,13 +4,28 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 local lain = require("lain")
 local naughty = require("naughty")
 local beautiful = require("beautiful")
+local bling = require("bling")
 
 local _M = {}
 local modkey = RC.vars.modkey
 local terminal = RC.vars.terminal
 
--- Assuming you have a table for your global keys, you can extend it like this:
--- local globalkeys = gears.table.join(globalkeys, table.unpack(generate_navigation()))
+local globalkeys
+
+local term_scratch = lain.util.quake({
+	app = "kitty",
+	name = "kitty_scratchpad",
+	argname = "--class kitty_scratchpad",
+	followtag = true,
+
+	height = 0.75,
+	width = 0.5,
+
+	vert = "center",
+	horiz = "center",
+
+	border = beautiful.border_width,
+})
 
 function _M.get(_)
 	local directions = {
@@ -21,99 +36,100 @@ function _M.get(_)
 	}
 
 	for _, dir in ipairs(directions) do
-		Globalkeys = gears.table.join(
-			Globalkeys,
+		globalkeys = gears.table.join(
+			globalkeys,
 
+			-- Focus client by direction
 			awful.key({ modkey }, dir.key, function()
 				awful.client.focus.global_bydirection(dir.direction)
-			end, { description = "Focus " .. dir.direction, group = "client" }),
+			end, { description = "Focus " .. dir.direction, group = "Focus" }),
 
+			-- Swap clients by direction
 			awful.key({ modkey, "Control" }, dir.key, function()
 				awful.client.swap.global_bydirection(dir.direction)
-			end, { description = "Swap " .. dir.direction, group = "client" })
+			end, { description = "Swap " .. dir.direction, group = "Layout" })
 		)
 	end
 
-	Globalkeys = gears.table.join(
-		Globalkeys,
+	globalkeys = gears.table.join(
+		globalkeys,
 
-		awful.key({ modkey }, "s", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
-		awful.key({ modkey }, "Escape", awful.tag.history.restore, { description = "go back", group = "tag" }),
+		-- Focus client by index
+		awful.key({ modkey, "Shift" }, "l", function()
+			awful.client.focus.byidx(1)
+		end, { description = "focus next by index", group = "Focus" }),
+		awful.key({ modkey, "Shift" }, "h", function()
+			awful.client.focus.byidx(-1)
+		end, { description = "focus previous by index", group = "Focus" }),
 
-		awful.key({ modkey }, "u", function()
+		-- Resize master width factor
+		awful.key({ modkey, "Shift" }, "k", function()
+			awful.tag.incmwfact(0.05)
+		end, { description = "increase master width factor", group = "Layout" }),
+		awful.key({ modkey, "Shift" }, "j", function()
+			awful.tag.incmwfact(-0.05)
+		end, { description = "decrease master width factor", group = "Layout" }),
+
+		-- Screenshots
+		awful.key({ modkey }, "y", function()
 			awful.spawn.with_shell("maim -s | xclip -selection clipboard -t image/png")
 		end, { description = "Screenshot to clipboard", group = "Utils" }),
-		awful.key({ modkey, "Control" }, "u", function()
+		awful.key({ modkey, "Control" }, "y", function()
 			awful.spawn.with_shell('maim -s ~/screenshot/$(date +"screenshot-%d-%m-%Y-%H-%M-%S.png")')
 		end, { description = "Screenshot to clipboard", group = "Utils" }),
 
-		awful.key(
-			{ modkey },
-			"u",
-			awful.client.urgent.jumpto,
-			{ description = "jump to urgent client", group = "client" }
-		),
-		awful.key({ modkey }, "Tab", function()
-			awful.client.focus.history.previous()
-			if client.focus then
-				client.focus:raise()
-			end
-		end, { description = "go back", group = "client" }),
-
-		-------------------
 		-- Standard program
-		awful.key({ modkey }, "y", function()
-			awful.spawn('rofi -modes "run,drun" -show drun')
+		awful.key({ modkey }, "o", function()
+			awful.spawn('rofi -modes "run,drun" -show drun', { tag = awful.screen.focused().selected_tag })
 		end, { description = "Program Launcher", group = "Launcher" }),
 
-		awful.key({ modkey }, "m", function()
-			awful.spawn(terminal)
+		awful.key({ modkey }, "i", function()
+			awful.spawn(terminal, { tag = awful.screen.focused().selected_tag })
 		end, { description = "Terminal", group = "Launcher" }),
 
-		awful.key({ modkey }, "/", function()
-			awful.spawn("qutebrowser")
+		awful.key({ modkey }, "u", function()
+			if awful.screen.focused().selected_tag.name == "󱓻" then
+				awful.spawn("librewolf", { tag = awful.screen.focused().selected_tag })
+			else
+				awful.spawn("qutebrowser", { tag = awful.screen.focused().selected_tag })
+			end
 		end, { description = "Browser", group = "Launcher" }),
-		-------------------
-		-------------------
 
-		awful.key({ modkey }, "d", function()
-			awful.client.focus.byidx(1)
-		end, { description = "focus next by index", group = "client" }),
-		awful.key({ modkey }, "g", function()
-			awful.client.focus.byidx(-1)
-		end, { description = "focus previous by index", group = "client" }),
+		-- Standard scratchpads
+		awful.key({ modkey }, ",", function()
+			term_scratch:toggle()
+		end, { description = "Terminal scratchpad", group = "Launcher" }),
 
-		-----------------
 		-- Media controls
-		awful.key({ modkey }, "x", function()
+		awful.key({ modkey, "Shift" }, "x", function()
 			os.execute("playerctl previous")
 		end, { description = "Previous", group = "Media" }),
-		awful.key({ modkey }, "c", function()
+
+		awful.key({ modkey, "Shift" }, "c", function()
 			os.execute("playerctl play-pause")
 		end, { description = "Play/Pause", group = "Media" }),
-		awful.key({ modkey }, "v", function()
+
+		awful.key({ modkey, "Shift" }, "v", function()
 			os.execute("playerctl next")
 		end, { description = "Next", group = "Media" }),
 
-		awful.key({ modkey }, "w", function()
+		-- Volume controls
+		awful.key({ modkey }, "x", function()
 			os.execute("pamixer --decrease 5")
 			require("ui.widgets.volume").update()
-		end, { description = "Lower 5%", group = "Media" }),
-		awful.key({ modkey }, "b", function()
+		end, { description = "Lower 5%", group = "Volume" }),
+
+		awful.key({ modkey }, "c", function()
+			os.execute("pamixer --toggle-mute")
+			require("ui.widgets.volume").update()
+		end, { description = "Toggle mute", group = "Volume" }),
+
+		awful.key({ modkey }, "v", function()
 			os.execute("pamixer --increase 5")
 			require("ui.widgets.volume").update()
-		end, { description = "Raise 5%", group = "Media" }),
+		end, { description = "Raise 5%", group = "Volume" }),
 
-		-- I don't know how to name it for now
-		awful.key({ modkey, "Control" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
-		awful.key({ modkey, "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
-
-		awful.key({ modkey }, "semicolon", function()
-			awful.tag.incmwfact(0.05)
-		end, { description = "increase master width factor", group = "layout" }),
-		awful.key({ modkey }, "comma", function()
-			awful.tag.incmwfact(-0.05)
-		end, { description = "decrease master width factor", group = "layout" }),
+		------------------------------------------
 
 		awful.key({ modkey, "Control" }, "n", function()
 			local c = awful.client.restore()
@@ -124,7 +140,7 @@ function _M.get(_)
 		end, { description = "restore minimized", group = "client" })
 	)
 
-	return Globalkeys
+	return globalkeys
 end
 
 return setmetatable({}, {

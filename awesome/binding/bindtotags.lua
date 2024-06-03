@@ -9,7 +9,7 @@ function _M.get(globalkeys)
 	-- Be careful: we use keycodes to make it work on any keyboard layout.
 	-- This should map on the top row of your keyboard, usually 1 to 9.
 
-	local keys = { "a", "z", "e", "r", "t" }
+	local keys = { "z", "e", "r" }
 
 	for i = 1, 3 do
 		globalkeys = gears.table.join(
@@ -21,7 +21,7 @@ function _M.get(globalkeys)
 				if tag then
 					tag:view_only()
 				end
-			end, { description = "View tag #" .. i, group = "tag" }),
+			end, { description = "View tag " .. i, group = "tag" }),
 
 			awful.key({ modkey, "Control" }, keys[i], function()
 				if client.focus then
@@ -30,7 +30,7 @@ function _M.get(globalkeys)
 						client.focus:move_to_tag(tag)
 					end
 				end
-			end, { description = "Move focused client to tag #" .. i, group = "tag" }),
+			end, { description = "Move focused client to tag " .. i, group = "tag" }),
 
 			awful.key({ modkey, "Control", "Shift" }, keys[i], function()
 				local screen = awful.screen.focused()
@@ -47,7 +47,7 @@ function _M.get(globalkeys)
 						client.focus:toggle_tag(tag)
 					end
 				end
-			end, { description = "Toggle focused client on tag #" .. i, group = "tag" })
+			end, { description = "Toggle focused client on tag " .. i, group = "tag" })
 		)
 	end
 
