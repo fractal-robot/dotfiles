@@ -60,11 +60,6 @@ function _M.get(_)
 			end
 		end, { description = "go back", group = "client" }),
 
-		-- Launcher
-		awful.key({ modkey }, "a", function()
-			print_client_tags()
-		end, {}),
-
 		-------------------
 		-- Standard program
 		awful.key({ modkey }, "y", function()

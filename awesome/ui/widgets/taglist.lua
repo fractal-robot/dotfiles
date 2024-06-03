@@ -3,10 +3,6 @@ local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 
-local function my_tag_shape(cr, width, height)
-	gears.shape.rounded_rect(cr, width, height, 5) -- Example for rounded rectangle
-end
-
 return awful.widget.taglist({
 	screen = s,
 	filter = awful.widget.taglist.filter.all,
