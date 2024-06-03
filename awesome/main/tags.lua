@@ -11,36 +11,25 @@ function _M.get(_)
 		-- Each screen has its own tag table.
 		-- tags[s] = awful.tag(tagpairs.names, s, tagpairs.layout)
 
-		awful.tag.add("1", {
+		-- layout = bling.layout.centered,
+		-- layout = awful.layout.suit.max,
+		-- layout = awful.layout.suit.floating,
+		-- layout = awful.layout.suit.fair,
+
+		awful.tag.add("", {
 			screen = screen[s],
 			layout = lain.layout.centerwork,
-			-- layout = bling.layout.centered,
 			index = 1,
 		})
-		awful.tag.add("2", {
+		awful.tag.add("", {
 			screen = screen[s],
-			-- layout = lain.layout.centerwork,
-			layout = bling.layout.centered,
+			layout = lain.layout.centerwork,
 			index = 2,
 		})
-		awful.tag.add("3", {
+		awful.tag.add("󰘔", {
 			screen = screen[s],
-			-- layout = awful.layout.suit.max.fullscreen,
-			layout = awful.layout.suit.max,
+			layout = lain.layout.centerwork,
 			index = 3,
-		})
-		awful.tag.add("4", {
-			screen = screen[s],
-			-- layout = awful.layout.suit.floating,
-			layout = awful.layout.suit.fair,
-			index = 4,
-		})
-
-		awful.tag.add("5", {
-			screen = screen[s],
-			-- layout = awful.layout.suit.floating,
-			layout = awful.layout.suit.floating,
-			index = 5,
 		})
 	end)
 

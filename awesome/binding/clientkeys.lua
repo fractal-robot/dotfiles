@@ -22,7 +22,7 @@ function _M.get(_)
 			c:kill()
 		end, { description = "close", group = "client" }),
 
-		awful.key({ modkey }, "Return", function(c)
+		awful.key({ modkey }, "f", function(c)
 			c:swap(awful.client.getmaster())
 		end, { description = "Move to master", group = "client" }),
 

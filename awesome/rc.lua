@@ -26,7 +26,7 @@ beautiful.gap_single_client = false
 require("main.error-handling")
 require("main.signals")
 
-beautiful.init(gears.filesystem.get_configuration_dir() .. "themes/gruvbox-material-medium-custom/theme.lua")
+beautiful.init(gears.filesystem.get_configuration_dir() .. "themes/main/theme.lua")
 beautiful.border_single_client = false
 
 local main = {
@@ -74,3 +74,21 @@ awful.rules.rules = main.rules(binding.clientkeys(), binding.clientbuttons())
 require("ui.statusbar")
 
 gears.wallpaper.set("#282828")
+
+function print_client_tags()
+	local focused_client = client.focus
+	if focused_client then
+		local tags = focused_client:tags()
+		local tags_str = "Tags for focused client:\n"
+		for _, t in ipairs(tags) do
+			tags_str = tags_str .. t.name .. "\n"
+		end
+		naughty.notify({ title = "Client Tags", text = tags_str, timeout = 5 })
+	else
+		naughty.notify({ title = "No focused client", text = "", timeout = 5 })
+	end
+end
+
+client.connect_signal("focus", print_client_tags)
+client.connect_signal("tagged", print_client_tags)
+client.connect_signal("untagged", print_client_tags)

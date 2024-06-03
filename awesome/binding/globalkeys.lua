@@ -61,6 +61,9 @@ function _M.get(_)
 		end, { description = "go back", group = "client" }),
 
 		-- Launcher
+		awful.key({ modkey }, "a", function()
+			print_client_tags()
+		end, {}),
 
 		-------------------
 		-- Standard program
@@ -123,20 +126,7 @@ function _M.get(_)
 			if c then
 				c:emit_signal("request::activate", "key.unminimize", { raise = true })
 			end
-		end, { description = "restore minimized", group = "client" }),
-
-		awful.key(
-			{ modkey },
-			"f",
-			function()
-				Dashboard.screen = awful.screen.focused()
-				Dashboard.visible = not Dashboard.visible
-			end,
-			--   function()
-			-- 	Dashboard.visible = false
-			-- end,
-			{ description = "Dashboard toggle", group = "custom" }
-		)
+		end, { description = "restore minimized", group = "client" })
 	)
 
 	return Globalkeys

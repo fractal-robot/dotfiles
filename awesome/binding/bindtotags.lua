@@ -11,7 +11,7 @@ function _M.get(globalkeys)
 
 	local keys = { "a", "z", "e", "r", "t" }
 
-	for i = 1, 5 do
+	for i = 1, 3 do
 		globalkeys = gears.table.join(
 			globalkeys,
 
