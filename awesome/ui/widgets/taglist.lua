@@ -1,32 +1,58 @@
-local gears = require("gears")
 local awful = require("awful")
-local wibox = require("wibox")
 local beautiful = require("beautiful")
+local wibox = require("wibox")
 
-return awful.widget.taglist({
-	screen = s,
-	filter = awful.widget.taglist.filter.all,
-	buttons = taglist_buttons,
-	layout = {
-		spacing = 5,
-		layout = wibox.layout.fixed.horizontal,
-	},
-	widget_template = {
-		{
+awful.screen.connect_for_each_screen(function(s)
+	s.taglist = awful.widget.taglist({
+		screen = s,
+		filter = awful.widget.taglist.filter.all,
+
+		widget_template = {
 			{
 				{
-					id = "text_role",
-					widget = wibox.widget.textbox,
+					{
+						id = "text_role",
+						widget = wibox.widget.textbox,
+					},
+					layout = wibox.layout.fixed.horizontal,
 				},
-				left = 10,
-				right = 10,
+				left = 4,
+				right = 4,
 				widget = wibox.container.margin,
 			},
-			id = "background_role",
 			widget = wibox.container.background,
-			shape = my_tag_shape, -- Apply the shape here
+			id = "background_role",
+
+			create_callback = function(self, t, _, _)
+				local function update_client_tags()
+					local client = client.focus
+					local tags = {}
+					if client then
+						tags = client:tags()
+					end
+
+					for _, tag in pairs(tags) do
+						if t == awful.tag.focused then
+							return
+						end
+
+						if t == tag then
+							self.fg = beautiful.taglist_fg_toggled
+
+							break
+						else
+							self.fg = beautiful.fg_normal
+						end
+					end
+				end
+
+				client.connect_signal("focus", update_client_tags)
+				client.connect_signal("unfocus", update_client_tags)
+				client.connect_signal("tagged", update_client_tags)
+				client.connect_signal("untagged", update_client_tags)
+
+				update_client_tags()
+			end,
 		},
-		margins = 2,
-		widget = wibox.container.margin,
-	},
-})
+	})
+end)

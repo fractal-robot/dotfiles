@@ -67,13 +67,11 @@ theme.bar_bg_alt = theme.bg_alt
 --theme.taglist_bg_focus = "#ff0000"
 
 -- taglist
-local taglist_square_size = dpi(6)
 theme.taglist_font = "Symbols Nerd Font 16"
-theme.taglist_squares_sel = theme_assets.taglist_squares_sel(taglist_square_size, theme.fg_normal)
-theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(taglist_square_size, theme.fg_normal)
 
 theme.taglist_fg_focus = theme.bg_normal
 theme.taglist_bg_focus = theme.green
+theme.taglist_fg_toggled = theme.yellow
 
 theme.notification_bg = theme.bg_urgent
 theme.notification_fg = theme.fg

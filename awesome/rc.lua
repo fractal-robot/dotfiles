@@ -26,7 +26,7 @@ beautiful.gap_single_client = false
 require("main.error-handling")
 require("main.signals")
 
-beautiful.init(gears.filesystem.get_configuration_dir() .. "themes/main/theme.lua")
+beautiful.init(gears.filesystem.get_configuration_dir() .. "themes/theme.lua")
 beautiful.border_single_client = false
 
 local main = {

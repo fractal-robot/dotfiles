@@ -7,7 +7,7 @@ local gears = require("gears")
 local lain = require("lain")
 local markup = lain.util.markup
 
-require("ui.widgets.mytaglist")
+require("ui.widgets.taglist")
 
 -- separator
 local separator = wibox.widget({
@@ -16,79 +16,6 @@ local separator = wibox.widget({
 })
 
 awful.screen.connect_for_each_screen(function(s)
-	s.taglist = awful.widget.taglist({
-		screen = s,
-		filter = awful.widget.taglist.filter.all,
-
-		widget_template = {
-			widget = wibox.container.background,
-			id = "background_role",
-
-			create_callback = function(self, t, _, _)
-				local function update_client_tags()
-					local client = client.focus
-					local tags = {}
-					if client then
-						tags = client:tags()
-					end
-
-					for _, tag in pairs(tags) do
-						if t == awful.tag.focused then
-							return
-						end
-
-						if t == tag then
-							self.fg = beautiful.green_light
-							break
-						else
-							self.fg = beautiful.fg_normal
-						end
-					end
-				end
-
-				client.connect_signal("focus", update_client_tags)
-				client.connect_signal("tagged", update_client_tags)
-				client.connect_signal("untagged", update_client_tags)
-
-				update_client_tags()
-			end,
-
-			{
-				left = 10,
-				right = 10,
-				widget = wibox.container.margin,
-
-				{
-					layout = wibox.layout.fixed.horizontal,
-
-					{
-						id = "text_role",
-						widget = wibox.widget.textbox,
-					},
-				},
-			},
-
-			-- create_callback = function(self, c3, index, objects) --luacheck: no unused args
-			-- 	self:get_children_by_id("index_role")[1].markup = "<b> " .. index .. " </b>"
-			-- 	self:connect_signal("mouse::enter", function()
-			-- 		if self.bg ~= "#ff0000" then
-			-- 			self.backup = self.bg
-			-- 			self.has_backup = true
-			-- 		end
-			-- 		self.bg = "#ff0000"
-			-- 	end)
-			-- 	self:connect_signal("mouse::leave", function()
-			-- 		if self.has_backup then
-			-- 			self.bg = self.backup
-			-- 		end
-			-- 	end)
-			-- end,
-			-- update_callback = function(self, c3, index, objects) --luacheck: no unused args
-			-- 	self:get_children_by_id("index_role")[1].markup = "<b> " .. index .. " </b>"
-			-- end,
-		},
-	})
-
 	s.layoutbox = awful.widget.layoutbox(s)
 	s.layoutbox:buttons(gears.table.join(
 		awful.button({}, 1, function()
@@ -139,10 +66,8 @@ awful.screen.connect_for_each_screen(function(s)
 					separator,
 					require("ui.widgets.volume").widget,
 					separator,
-					separator,
 					s.taglist,
 					separator,
-					s.mytaglist,
 				},
 
 				{ -- Right widgets
