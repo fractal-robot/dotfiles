@@ -6,22 +6,12 @@ pcall(require, "luarocks.loader")
 local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
--- Widget and layout library
-local wibox = require("wibox")
 -- Theme handling library
 local beautiful = require("beautiful")
--- Notification library
-local naughty = require("naughty")
--- local menubar = require("menubar")
-local bling = require("bling")
-
-bling.module.window_swallowing.start()
 
 --------------------------------------------------------------------------------
 --- config ---------------------------------------------------------------------
 --------------------------------------------------------------------------------
-
--- dpi = require("beautiful.xresources").apply_dpi
 
 beautiful.gap_single_client = false
 

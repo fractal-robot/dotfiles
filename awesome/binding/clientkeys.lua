@@ -19,6 +19,11 @@ function _M.get(_)
 			c:raise()
 		end, { description = "Toggle maximized", group = "Client" }),
 
+		awful.key({ modkey, "Shift" }, "f", function(c)
+			c.fullscreen = not c.fullscreen
+			c:raise()
+		end, { description = "Toggle fullscreen", group = "Client" }),
+
 		------------------------------
 
 		awful.key({ modkey }, "o", function(c)

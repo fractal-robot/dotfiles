@@ -1,10 +1,7 @@
 local gears = require("gears")
 local awful = require("awful")
-local hotkeys_popup = require("awful.hotkeys_popup")
 local lain = require("lain")
-local naughty = require("naughty")
 local beautiful = require("beautiful")
-local bling = require("bling")
 
 local _M = {}
 local modkey = RC.vars.modkey
@@ -17,6 +14,7 @@ local term_scratch = lain.util.quake({
 	name = "kitty_scratchpad",
 	argname = "--class kitty_scratchpad",
 	followtag = true,
+	visible = true,
 
 	height = 0.75,
 	width = 0.5,
@@ -88,11 +86,7 @@ function _M.get(_)
 		end, { description = "Terminal", group = "Launcher" }),
 
 		awful.key({ modkey }, "u", function()
-			if awful.screen.focused().selected_tag.name == "󱓻" then
-				awful.spawn("librewolf", { tag = awful.screen.focused().selected_tag })
-			else
-				awful.spawn("qutebrowser", { tag = awful.screen.focused().selected_tag })
-			end
+			awful.spawn("brave", { tag = awful.screen.focused().selected_tag })
 		end, { description = "Browser", group = "Launcher" }),
 
 		-- Standard scratchpads
@@ -105,7 +99,7 @@ function _M.get(_)
 			os.execute("playerctl previous")
 		end, { description = "Previous", group = "Media" }),
 
-		awful.key({ modkey, "Shift" }, "c", function()
+		awful.key({ modkey }, "c", function()
 			os.execute("playerctl play-pause")
 		end, { description = "Play/Pause", group = "Media" }),
 
@@ -119,7 +113,7 @@ function _M.get(_)
 			require("ui.widgets.volume").update()
 		end, { description = "Lower 5%", group = "Volume" }),
 
-		awful.key({ modkey }, "c", function()
+		awful.key({ modkey, "Shift" }, "c", function()
 			os.execute("pamixer --toggle-mute")
 			require("ui.widgets.volume").update()
 		end, { description = "Toggle mute", group = "Volume" }),

@@ -11,6 +11,8 @@ if status is-interactive
   end
 
 	starship init fish | source
+  enable_transience
+
 	zoxide init fish | source
 
   # fish_config theme choose rose-pine
@@ -23,6 +25,7 @@ if status is-interactive
 	end
 
 	abbr --add s sudo 
+  abbr --add t task
 	abbr --add c clear
 	abbr --add l exa
 	abbr --add ll exa -1la

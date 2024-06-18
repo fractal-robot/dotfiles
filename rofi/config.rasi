@@ -1,0 +1,224 @@
+configuration {
+	kb-mode-next:  "Tab";
+	kb-element-next: "";
+
+/*	modes: "window,drun,run,ssh";*/
+	font: "SauceCodePro Nerd Font bold 11";
+/*	location: 0;*/
+/*	yoffset: 0;*/
+/*	xoffset: 0;*/
+	fixed-num-lines: true;
+	show-icons: true;
+	terminal: "kitty";
+/*	ssh-client: "ssh";*/
+/*	ssh-command: "{terminal} -e {ssh-client} {host} [-p {port}]";*/
+/*	run-command: "{cmd}";*/
+/*	run-list-command: "";*/
+	run-shell-command: "kitty --hold {cmd}";
+/*	window-command: "wmctrl -i -R {window}";*/
+/*	window-match-fields: "all";*/
+/*	icon-theme: ;*/
+/*	drun-match-fields: "name,generic,exec,categories,keywords";*/
+/*	drun-categories: ;*/
+/*	drun-show-actions: false;*/
+/*	drun-display-format: "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";*/
+/*	drun-url-launcher: "xdg-open";*/
+/*	disable-history: false;*/
+/*	ignored-prefixes: "";*/
+/*	sort: false;*/
+/*	sorting-method: "normal";*/
+/*	case-sensitive: false;*/
+/*	cycle: true;*/
+/*	sidebar-mode: false;*/
+/*	hover-select: false;*/
+/*	eh: 1;*/
+/*	auto-select: false;*/
+/*	parse-hosts: false;*/
+/*	parse-known-hosts: true;*/
+/*	combi-modes: "window,run";*/
+/*	matching: "normal";*/
+/*	tokenize: true;*/
+/*	m: "-5";*/
+/*	filter: ;*/
+/*	dpi: -1;*/
+/*	threads: 0;*/
+/*	scroll-method: 0;*/
+/*	window-format: "{w}    {c}   {t}";*/
+/*	click-to-exit: true;*/
+/*	max-history-size: 25;*/
+/*	combi-hide-mode-prefix: false;*/
+/*	combi-display-format: "{mode} {text}";*/
+/*	matching-negate-char: '-' /* unsupported */;*/
+/*	cache-dir: ;*/
+/*	window-thumbnail: false;*/
+/*	drun-use-desktop-cache: false;*/
+/*	drun-reload-desktop-cache: false;*/
+	normalize-match: true;
+/*	steal-focus: false;*/
+/*	application-fallback-icon: ;*/
+/*	refilter-timeout-limit: 8192;*/
+/*	xserver-i300-workaround: false;*/
+/*	pid: "/run/user/1000/rofi.pid";*/
+/*	display-window: ;*/
+/*	display-windowcd: ;*/
+/*	display-run: ;*/
+/*	display-ssh: ;*/
+/*	display-drun: ;*/
+/*	display-combi: ;*/
+/*	display-keys: ;*/
+/*	display-filebrowser: ;*/
+  timeout {
+      action: "kb-cancel";
+      delay:  0;
+  }
+  filebrowser {
+      directories-first: true;
+      sorting-method:    "name";
+  }
+}
+
+* {
+	bg: #282828;
+	fgd: #d4be98;
+	red: #ea6962;
+
+	overlay: #45403d;	
+	subtle: #a89984;
+	hlow: #32302f;
+
+/*  bg: #191724; */
+/*	fgd: #e0def4; */
+/*	red: #eb6f92; */
+
+/*	overlay: #26233a;	 */
+/*	subtle: #908caa; */
+/*	hlow: #21202e; */
+
+	foreground: @fgd;
+	background: @bg;
+	active-background: @hlow;
+	urgent-background: @red;
+
+	selected-background: @active-background;
+	selected-urgent-background: @urgent-background;
+	selected-active-background: @active-background;
+	separatorcolor: @overlay;
+	bordercolor: @subtle;
+}
+
+#window {
+	background-color: @background;
+	border:           2;
+	border-color:     @bordercolor;
+	padding:          10;
+	width:      40%;
+	height: 		40%;
+
+}
+#mainbox {
+	border:  0;
+	padding: 2;
+}
+#message {
+	border:       1px dash 0px 0px ;
+	border-color: @separatorcolor;
+	padding:      1px ;
+}
+#textbox {
+	text-color: @foreground;
+}
+#listview {
+	fixed-height: 0;
+	border:       0px solid 0px 0px ;
+	border-color: @bordercolor;
+	spacing:      1px ;
+	scrollbar:    false;
+	padding:      10px 0px 0px 0px;
+}
+#element {
+	border:  0;
+	padding: 1px ;
+}
+#element.normal.normal {
+	background-color: @background;
+	text-color:       @foreground;
+}
+#element.normal.urgent {
+	background-color: @urgent-background;
+	text-color:       @urgent-foreground;
+}
+#element.normal.active {
+	background-color: @active-background;
+	text-color:       @background;
+}
+#element.selected.normal {
+	background-color: @selected-background;
+	text-color:       @foreground;
+}
+#element.selected.urgent {
+	background-color: @selected-urgent-background;
+	text-color:       @foreground;
+}
+#element.selected.active {
+	background-color: @selected-active-background;
+	text-color:       @background;
+}
+#element.alternate.normal {
+	background-color: @background;
+	text-color:       @foreground;
+}
+#element.alternate.urgent {
+	background-color: @urgent-background;
+	text-color:       @foreground;
+}
+#element.alternate.active {
+	background-color: @active-background;
+	text-color:       @foreground;
+}
+#scrollbar {
+	width:        2px ;
+	border:       0;
+	handle-width: 8px ;
+	padding:      0;
+}
+#sidebar {
+	border:       2px dash 0px 0px ;
+	border-color: @separatorcolor;
+}
+#button.selected {
+	background-color: @selected-background;
+	text-color:       @foreground;
+}
+#inputbar {
+	spacing:    0;
+	text-color: @foreground;
+	padding:    1px ;
+}
+#case-indicator {
+	spacing:    0;
+	text-color: @foreground;
+}
+#entry {
+	spacing:    0;
+	placeholder: "";
+	text-color: @red;
+	cursor: 		pointer;
+	padding:    2px 10px 2px ;
+}
+#prompt {
+	spacing:    0;
+	text-color: @background;
+	background-color: @foreground;
+	// padding: 10px;
+	// spacing: 100;
+		padding:      2px 10px 2px ;
+		// up, side, down
+
+
+
+}
+#inputbar {
+	children:   [ prompt,entry ];
+	// inputbar Packs: prompt,entry,case-indicator
+}
+

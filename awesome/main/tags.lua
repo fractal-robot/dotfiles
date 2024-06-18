@@ -1,6 +1,5 @@
 local awful = require("awful")
 local lain = require("lain")
-local bling = require("bling")
 
 local _M = {}
 
@@ -11,7 +10,6 @@ function _M.get(_)
 		-- Each screen has its own tag table.
 		-- tags[s] = awful.tag(tagpairs.names, s, tagpairs.layout)
 
-		-- layout = bling.layout.centered,
 		-- layout = awful.layout.suit.max,
 		-- layout = awful.layout.suit.floating,
 		-- layout = awful.layout.suit.fair,

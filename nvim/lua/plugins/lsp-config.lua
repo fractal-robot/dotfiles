@@ -132,15 +132,15 @@ return {
 			},
 		})
 
-		require("lspconfig").ltex.setup({
-			settings = {
-				ltex = {
-					language = "en-US",
-					additionalRules = {
-						languageModel = "~/system/models/ngrams/",
-					},
-				},
-			},
-		})
+		-- require("lspconfig").ltex.setup({
+		-- 	settings = {
+		-- 		ltex = {
+		-- 			language = "en-US",
+		-- 			additionalRules = {
+		-- 				languageModel = "~/system/models/ngrams/",
+		-- 			},
+		-- 		},
+		-- 	},
+		-- })
 	end,
 }
