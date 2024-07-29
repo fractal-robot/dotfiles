@@ -3,6 +3,9 @@ local lain = require("lain")
 
 local _M = {}
 
+-- local layout = lain.layout.centerwork
+local layout = awful.layout.suit.tile
+
 function _M.get(_)
 	local tags = {}
 
@@ -16,17 +19,17 @@ function _M.get(_)
 
 		awful.tag.add("󱓻", {
 			screen = screen[s],
-			layout = lain.layout.centerwork,
+			layout = layout,
 			index = 1,
 		})
 		awful.tag.add("", {
 			screen = screen[s],
-			layout = lain.layout.centerwork,
+			layout = layout,
 			index = 2,
 		})
 		awful.tag.add("󰎚", {
 			screen = screen[s],
-			layout = lain.layout.centerwork,
+			layout = layout,
 			index = 3,
 		})
 	end)

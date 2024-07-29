@@ -15,7 +15,7 @@ return {
 			},
 
 			window_overlap_clear_enabled = true, -- toggles images when windows are overlapped
-			window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
+			-- window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs" },
 		})
 	end,
 }

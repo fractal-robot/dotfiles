@@ -39,3 +39,20 @@ include dark-16.theme
 #include solarized-light-256.theme
 #include no-color.theme
 
+# Effort UDA
+uda.effort.type=string
+uda.effort.label=Effort
+uda.effort.values=H,M,L
+uda.effort.default=M
+
+# Time UDA
+uda.time.type=string
+uda.time.label=Time
+uda.time.values=H,M,L
+uda.time.default=M
+
+report.next.columns=id,start.age,entry.age,depends,priority,time,effort,project,tags,recur,scheduled.countdown,due.relative,until.remaining,description,urgency
+report.next.labels=ID,Active,Age,Deps,P,Time,Effort,Project,Tag,Recur,S,Due,Until,Description,Urg
+
+report.list.columns=id,start.age,entry.age,depends.indicator,priority,time,effort,project,tags,recur.indicator,scheduled.countdown,due,until.remaining,description.count,urgency
+report.list.labels=ID,Active,Age,D,P,Time,Effort,Project,Tags,R,Sch,Due,Until,Description,Urg

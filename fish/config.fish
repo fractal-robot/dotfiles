@@ -24,13 +24,20 @@ if status is-interactive
 		alias wget="wget --hsts-file=\"$XDG_DATA_HOME/wget-hsts\""
 	end
 
-	abbr --add s sudo 
-  abbr --add t task
-	abbr --add c clear
+	abbr --add s sudo
+  abbr --add t task; abbr --add task t
+	abbr --add v nvim; abbr --add nvim v 
+
+  abbr --add b buku --suggest
 	abbr --add l exa
 	abbr --add ll exa -1la
-	abbr --add v nvim
 	abbr --add rm trash-put
+
+  abbr --add --set-cursor ff 'trans fr:fr "%"'
+	abbr --add --set-cursor ee 'trans en:en "%"'
+	abbr --add --set-cursor fe 'trans fr:en "%"'
+	abbr --add --set-cursor ef 'trans en:fr "%"'
+
 
 	fish_vi_key_bindings
 	set fish_cursor_default block # normal & visual mode
@@ -47,15 +54,6 @@ function fish_greeting
   # echo -ne "\n\n"
   # backup-status.sh
 end
-
-# function yy
-# 	set tmp (mktemp -t "yazi-cwd.XXXXXX")
-# 	yazi $argv --cwd-file="$tmp"
-# 	if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-# 		cd -- "$cwd"
-# 	end
-# 	rm -f -- "$tmp"
-# end
 
 # Created by `pipx` on 2024-05-02 23:15:08
 set PATH $PATH /home/usr/.local/bin

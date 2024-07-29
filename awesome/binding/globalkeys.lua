@@ -72,8 +72,8 @@ function _M.get(_)
 		awful.key({ modkey }, "y", function()
 			awful.spawn.with_shell("maim -s | xclip -selection clipboard -t image/png")
 		end, { description = "Screenshot to clipboard", group = "Utils" }),
-		awful.key({ modkey, "Control" }, "y", function()
-			awful.spawn.with_shell('maim -s ~/screenshot/$(date +"screenshot-%d-%m-%Y-%H-%M-%S.png")')
+		awful.key({ modkey, "Shift" }, "y", function()
+			awful.spawn.with_shell('maim -s ~/documents/screenshots/$(date +"screenshot-%d-%m-%Y-%H-%M-%S.png")')
 		end, { description = "Screenshot to clipboard", group = "Utils" }),
 
 		-- Standard program
@@ -122,6 +122,10 @@ function _M.get(_)
 			os.execute("pamixer --increase 5")
 			require("ui.widgets.volume").update()
 		end, { description = "Raise 5%", group = "Volume" }),
+
+		awful.key({ modkey }, "w", function()
+			require("ui.popup-info").show()
+		end, { description = "lskjdflksjdf", group = "jlksdfjklsdf" }),
 
 		------------------------------------------
 
