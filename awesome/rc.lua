@@ -63,9 +63,6 @@ awful.rules.rules = main.rules(binding.clientkeys(), binding.clientbuttons())
 --- theme ----------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
-require("ui.widgets.taglist")
-require("ui.statusbar")
-
 gears.wallpaper.set("#282828")
 
 --  󰎚 󱓻
